@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\CmsPage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class CmsController extends Controller
 {
@@ -90,6 +91,52 @@ class CmsController extends Controller
             ";
         }
         return view('pages.cms_page')->with(compact('cmsPageDetails','categories_menu','categories'));
+    }
+
+    public function contact(Request $request){
+        if($request->isMethod('post')){
+            $data = $request->all();
+
+            //Send Contact Email
+            $email = "sultankaman93@gmail.com";
+            $messageData = [
+                'name'=>$data['name'],
+                'email'=>$data['email'],
+                'subject'=>$data['subject'],
+                'comment'=>$data['message']
+                ];
+            Mail::send('emails.enquiry',$messageData,function($message)use($email){
+                $message->to($email)->subject('Enquiry from E-com Website');
+            });
+            return redirect()->back()->with('flash_message_success','Thanks for your enquiry. We will get back to you soon!');
+        }
+
+        // Get all Categories with subCategorie
+        $categories_menu = "";
+        $categories = Category::with('categories')->where(['parent_id' => 0])->get();
+        foreach ($categories as $cat) {
+            $categories_menu .= "
+            <div class='panel-heading'>
+                <h4 class='panel-title'>
+                    <a data-toggle='collapse' data-parent='#accordian' href='#" . $cat->id . "'>
+                        <span class='badge pull-right'><i class='fa fa-plus'></i></span>
+                        " . $cat->name . "
+                     </a>
+                 </h4>
+            </div>
+            <div id='" . $cat->id . "' class='panel-collapse collapse'>
+                 <div class='panel-body'>
+                 <ul>";
+            $sub_categories = Category::where(['parent_id' => $cat->id])->get();
+            foreach ($sub_categories as $sub_cat) {
+                $categories_menu .= "<li><a href='#'>" . $sub_cat->name . "</a></li>";
+            }
+            $categories_menu .= "</ul>
+                </div>
+            </div>
+            ";
+        }
+        return view('pages.contact')->with(compact('categories_menu','categories'));
     }
 
 }

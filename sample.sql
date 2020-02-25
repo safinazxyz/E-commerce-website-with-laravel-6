@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1
--- Üretim Zamanı: 24 Şub 2020, 15:00:51
+-- Üretim Zamanı: 25 Şub 2020, 01:19:31
 -- Sunucu sürümü: 10.4.11-MariaDB
 -- PHP Sürümü: 7.4.2
 
@@ -120,7 +120,9 @@ INSERT INTO `categories` (`id`, `parent_id`, `name`, `description`, `url`, `stat
 (5, 1, 'Casual T-Shirts', NULL, 'casual-t-shirts', 1, NULL, '2018-05-02 09:00:27', '2018-05-19 22:34:21'),
 (6, 1, 'Sports T-Shirts', 'test', 'sports-tshirts', 1, NULL, '2018-05-09 10:55:52', '2018-05-10 08:36:55'),
 (7, 1, 'Test T-shirts', 'tet', 'test', 0, NULL, '2018-05-09 10:56:56', '2018-05-09 10:56:56'),
-(8, 0, 'Shirts', NULL, 'shirts', 1, NULL, '2018-11-30 12:10:39', '2018-11-30 12:10:39');
+(8, 0, 'Shirts', NULL, 'shirts', 1, NULL, '2018-11-30 12:10:39', '2018-11-30 12:10:39'),
+(9, 0, 'Bags', 'bags', 'bags', 1, NULL, '2020-02-24 20:10:16', '2020-02-24 20:10:16'),
+(10, 9, 'Casual Bags', 'casual bags', 'casual-bags', 1, NULL, '2020-02-24 20:10:37', '2020-02-24 20:10:37');
 
 -- --------------------------------------------------------
 
@@ -137,6 +139,14 @@ CREATE TABLE `cms_pages` (
   `created_at` datetime NOT NULL,
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_turkish_ci;
+
+--
+-- Tablo döküm verisi `cms_pages`
+--
+
+INSERT INTO `cms_pages` (`id`, `title`, `description`, `url`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'About Us', 'About US', 'about-us', 1, '2020-02-24 23:22:48', '2020-02-24 20:22:48'),
+(2, 'Terms & Conditions', 'Terms & Conditions', 'terms-conditions', 1, '2020-02-24 23:23:22', '2020-02-24 20:23:22');
 
 -- --------------------------------------------------------
 
@@ -440,6 +450,13 @@ CREATE TABLE `delivery_addresses` (
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Tablo döküm verisi `delivery_addresses`
+--
+
+INSERT INTO `delivery_addresses` (`id`, `user_id`, `user_email`, `name`, `address`, `city`, `state`, `country`, `pincode`, `mobile`, `created_at`, `updated_at`) VALUES
+(1, 2, 'adiguzelxyz@gmail.com', 'Sultan Kaman', 'Selimiye Mah.', 'Istanbul', 'Dalamanc', 'Turkey', '34000', '05065041503', '2020-02-24 20:20:23', '2020-02-24 20:20:23');
+
 -- --------------------------------------------------------
 
 --
@@ -493,6 +510,13 @@ CREATE TABLE `orders` (
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Tablo döküm verisi `orders`
+--
+
+INSERT INTO `orders` (`id`, `user_id`, `user_email`, `name`, `address`, `city`, `state`, `pincode`, `country`, `mobile`, `shipping_charges`, `coupon_code`, `coupon_amount`, `order_status`, `payment_method`, `grand_total`, `created_at`, `updated_at`) VALUES
+(1, 2, 'adiguzelxyz@gmail.com', 'Sultan Kaman', 'Selimiye Mah.', 'Istanbul', 'Dalamanc', '34000', 'Turkey', '05065041503', 0, '', 0, 'New', 'COD', 370, '2020-02-24 23:20:28', '2020-02-24 20:20:28');
+
 -- --------------------------------------------------------
 
 --
@@ -513,6 +537,14 @@ CREATE TABLE `orders_products` (
   `created_at` datetime NOT NULL,
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Tablo döküm verisi `orders_products`
+--
+
+INSERT INTO `orders_products` (`id`, `order_id`, `user_id`, `product_id`, `product_code`, `product_name`, `product_size`, `product_color`, `product_price`, `product_qty`, `created_at`, `updated_at`) VALUES
+(1, 1, 2, 3, '#TSH127-36', 'topuklu', '36', 'siyah', 250, 1, '2020-02-24 23:20:28', '2020-02-24 20:20:28'),
+(2, 1, 2, 1, '#TS125-S', 't-shirt', 'S', 'mavi', 120, 1, '2020-02-24 23:20:28', '2020-02-24 20:20:28');
 
 -- --------------------------------------------------------
 
@@ -548,6 +580,15 @@ CREATE TABLE `products` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Tablo döküm verisi `products`
+--
+
+INSERT INTO `products` (`id`, `category_id`, `product_name`, `product_code`, `product_color`, `description`, `care`, `price`, `image`, `feature_item`, `status`, `created_at`, `updated_at`) VALUES
+(1, 6, 't-shirt', '#TS125', 'mavi', 'Sport T-shirt', 'Pamuk 100%', 120.00, '71595.jpg', 1, 1, '2020-02-24 20:09:15', '2020-02-24 20:09:15'),
+(2, 10, 'casual bag', '#BC126', 'siyah', 'siyah casual bag', 'suni deri', 230.00, '59911.jpg', 1, 1, '2020-02-24 20:12:01', '2020-02-24 20:12:01'),
+(3, 4, 'topuklu', '#TSH127', 'siyah', 'siyah topuklu ayakkabı', 'suni deri', 250.00, '96446.jpg', 1, 1, '2020-02-24 20:14:32', '2020-02-24 20:14:32');
+
 -- --------------------------------------------------------
 
 --
@@ -565,6 +606,21 @@ CREATE TABLE `products_attributes` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Tablo döküm verisi `products_attributes`
+--
+
+INSERT INTO `products_attributes` (`id`, `product_id`, `sku`, `size`, `price`, `stock`, `created_at`, `updated_at`) VALUES
+(1, 1, '#TS125-M', 'M', 120.00, 10, '2020-02-24 20:13:17', '2020-02-24 20:13:17'),
+(2, 1, '#TS125-S', 'S', 120.00, 10, '2020-02-24 20:13:17', '2020-02-24 20:13:17'),
+(3, 1, '#TS125-L', 'L', 120.00, 10, '2020-02-24 20:13:17', '2020-02-24 20:13:17'),
+(7, 2, '#BC126-S', 'S', 150.00, 10, '2020-02-24 20:16:48', '2020-02-24 20:16:48'),
+(8, 2, '#BC126-M', 'M', 250.00, 10, '2020-02-24 20:16:48', '2020-02-24 20:16:48'),
+(9, 2, '#BC126-L', 'L', 350.00, 10, '2020-02-24 20:16:48', '2020-02-24 20:16:48'),
+(10, 3, '#TSH127-36', '36', 250.00, 10, '2020-02-24 20:17:56', '2020-02-24 20:17:56'),
+(11, 3, '#TSH127-37', '37', 250.00, 10, '2020-02-24 20:17:56', '2020-02-24 20:17:56'),
+(12, 3, '#TSH127-38', '38', 250.00, 10, '2020-02-24 20:18:09', '2020-02-24 20:18:09');
+
 -- --------------------------------------------------------
 
 --
@@ -578,6 +634,18 @@ CREATE TABLE `products_images` (
   `created_at` datetime NOT NULL,
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Tablo döküm verisi `products_images`
+--
+
+INSERT INTO `products_images` (`id`, `product_id`, `image`, `created_at`, `updated_at`) VALUES
+(1, 1, '39244.jpg', '2020-02-24 23:09:42', '2020-02-24 20:09:42'),
+(2, 1, '51410.jpg', '2020-02-24 23:09:42', '2020-02-24 20:09:42'),
+(3, 1, '59357.jpg', '2020-02-24 23:09:42', '2020-02-24 20:09:42'),
+(4, 3, '34630.jpg', '2020-02-24 23:14:43', '2020-02-24 20:14:43'),
+(5, 3, '98628.jpg', '2020-02-24 23:14:44', '2020-02-24 20:14:44'),
+(6, 3, '90170.jpg', '2020-02-24 23:14:44', '2020-02-24 20:14:44');
 
 -- --------------------------------------------------------
 
@@ -602,6 +670,13 @@ CREATE TABLE `users` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Tablo döküm verisi `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `address`, `city`, `state`, `country`, `pincode`, `mobile`, `email`, `password`, `admin`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
+(2, 'Sultan Kaman', 'Selimiye Mah.', 'Istanbul', 'Dalamanc', 'Turkey', '34000', '05065041503', 'adiguzelxyz@gmail.com', '$2y$10$5YN2Belr9NCmQNMMDcIU3u1Mi/x7foX3sovndVlXQQmv9VShqbo8W', 0, 1, NULL, '2020-02-24 20:19:16', '2020-02-24 20:20:23');
 
 --
 -- Dökümü yapılmış tablolar için indeksler
@@ -724,19 +799,19 @@ ALTER TABLE `banners`
 -- Tablo için AUTO_INCREMENT değeri `carts`
 --
 ALTER TABLE `carts`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `cms_pages`
 --
 ALTER TABLE `cms_pages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `countries`
@@ -754,7 +829,7 @@ ALTER TABLE `coupons`
 -- Tablo için AUTO_INCREMENT değeri `delivery_addresses`
 --
 ALTER TABLE `delivery_addresses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `migrations`
@@ -766,37 +841,37 @@ ALTER TABLE `migrations`
 -- Tablo için AUTO_INCREMENT değeri `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `orders_products`
 --
 ALTER TABLE `orders_products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `products_attributes`
 --
 ALTER TABLE `products_attributes`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `products_images`
 --
 ALTER TABLE `products_images`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

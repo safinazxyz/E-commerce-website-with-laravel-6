@@ -17,10 +17,6 @@
 
 Route::match(['get', 'post'], '/admin', 'AdminController@login');
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
 //view index
 Route::get('/', 'IndexController@index');
 
@@ -150,5 +146,13 @@ Route::group(['middleware' => ['adminlogin']], function () {
 
 Route::get('/logout', 'AdminController@logout');
 
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+// Display Contact Page
+Route::match(['get','post'],'/page/contact','CmsController@contact');
+
 //Route for Display Front-End CMS Pages
 Route::match(['get', 'post'], '/page/{url}', 'CmsController@cmsPage');
+

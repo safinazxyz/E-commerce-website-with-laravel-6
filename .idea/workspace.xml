@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5472f935-1950-4387-8698-cfaf51ac5c06" name="Default Changelist" comment="" />
+    <list default="true" id="5472f935-1950-4387-8698-cfaf51ac5c06" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CmsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CmsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -82,6 +87,9 @@
     </option>
     <expand />
     <select />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PackageJsonUpdateNotifier">
     <dismissed value="$PROJECT_DIR$/package.json" />
@@ -178,15 +186,20 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1WASy3FXLRphL2EavJLGiPcY7hj" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../14.02.2020/htdocs/katiabtq" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/emails" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -197,18 +210,18 @@
     <property name="settings.editor.selected.configurable" value="settings.php.debug.servers" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\sultan\Desktop\sample2\resources\views\emails" />
+      <recent name="C:\Users\sultan\Desktop\sample2\resources\views\pages" />
+      <recent name="C:\Users\sultan\Desktop\sample-master" />
+      <recent name="C:\xampp\htdocs\laravel\sample\resources\views\admin\pages" />
+      <recent name="C:\xampp\htdocs\laravel\sample\app\Http\Controllers\Auth" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\laravel\sample\resources\views\admin\users" />
       <recent name="C:\xampp\htdocs\laravel\sample\resources\views\orders" />
       <recent name="C:\xampp\htdocs\laravel\sample\resources\views\admin" />
       <recent name="C:\xampp\htdocs\laravel\sample\resources\views\products" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\sultan\Desktop\sample-master" />
-      <recent name="C:\xampp\htdocs\laravel\sample\resources\views\admin\pages" />
-      <recent name="C:\xampp\htdocs\laravel\sample\app\Http\Controllers\Auth" />
-      <recent name="C:\xampp\htdocs\laravel\sample\resources\views\emails" />
-      <recent name="C:\xampp\htdocs\laravel\sample\resources\views\admin\orders" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -254,6 +267,7 @@
       <workItem from="1582493624457" duration="604000" />
       <workItem from="1582494261361" duration="3115000" />
       <workItem from="1582497667168" duration="2563000" />
+      <workItem from="1582582748862" duration="4430000" />
     </task>
     <servers />
   </component>
