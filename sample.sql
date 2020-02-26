@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1
--- Üretim Zamanı: 25 Şub 2020, 01:19:31
+-- Üretim Zamanı: 26 Şub 2020, 01:18:27
 -- Sunucu sürümü: 10.4.11-MariaDB
 -- PHP Sürümü: 7.4.2
 
@@ -60,6 +60,15 @@ CREATE TABLE `banners` (
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Tablo döküm verisi `banners`
+--
+
+INSERT INTO `banners` (`id`, `image`, `title`, `link`, `status`, `created_at`, `updated_at`) VALUES
+(1, '42892.png', 'Banner1', 'banner1', 1, '2020-02-25 18:10:47', '2020-02-25 18:10:47'),
+(2, '93797.png', 'Banner2', 'banner2', 1, '2020-02-25 18:11:00', '2020-02-25 18:11:00'),
+(3, '76614.png', 'Banner3', 'banner3', 1, '2020-02-25 18:11:10', '2020-02-25 18:11:10');
+
 -- --------------------------------------------------------
 
 --
@@ -102,6 +111,9 @@ CREATE TABLE `categories` (
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `url` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `meta_title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `meta_description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `meta_keywords` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` tinyint(4) NOT NULL DEFAULT 1,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -112,17 +124,18 @@ CREATE TABLE `categories` (
 -- Tablo döküm verisi `categories`
 --
 
-INSERT INTO `categories` (`id`, `parent_id`, `name`, `description`, `url`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 0, 'T-Shirts', NULL, 't-shirts', 1, NULL, '2018-03-26 09:20:29', '2018-03-26 09:20:29'),
-(2, 0, 'Shoes', NULL, 'shoes', 1, NULL, '2018-03-26 10:25:46', '2018-03-26 10:25:46'),
-(3, 1, 'Formal T-Shirts', 'test', 'format-tshirts', 1, NULL, '2018-03-26 11:47:41', '2018-03-26 12:03:19'),
-(4, 2, 'Formal Shoes', NULL, 'formal-shoes', 1, NULL, '2018-05-02 08:58:00', '2018-05-02 08:58:00'),
-(5, 1, 'Casual T-Shirts', NULL, 'casual-t-shirts', 1, NULL, '2018-05-02 09:00:27', '2018-05-19 22:34:21'),
-(6, 1, 'Sports T-Shirts', 'test', 'sports-tshirts', 1, NULL, '2018-05-09 10:55:52', '2018-05-10 08:36:55'),
-(7, 1, 'Test T-shirts', 'tet', 'test', 0, NULL, '2018-05-09 10:56:56', '2018-05-09 10:56:56'),
-(8, 0, 'Shirts', NULL, 'shirts', 1, NULL, '2018-11-30 12:10:39', '2018-11-30 12:10:39'),
-(9, 0, 'Bags', 'bags', 'bags', 1, NULL, '2020-02-24 20:10:16', '2020-02-24 20:10:16'),
-(10, 9, 'Casual Bags', 'casual bags', 'casual-bags', 1, NULL, '2020-02-24 20:10:37', '2020-02-24 20:10:37');
+INSERT INTO `categories` (`id`, `parent_id`, `name`, `description`, `url`, `meta_title`, `meta_description`, `meta_keywords`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 0, 'T-Shirts', NULL, 't-shirts', '', '', '', 1, NULL, '2018-03-26 09:20:29', '2018-03-26 09:20:29'),
+(2, 0, 'Shoes', NULL, 'shoes', '', '', '', 1, NULL, '2018-03-26 10:25:46', '2018-03-26 10:25:46'),
+(3, 1, 'Formal T-Shirts', 'test', 'format-tshirts', '', '', '', 1, NULL, '2018-03-26 11:47:41', '2018-03-26 12:03:19'),
+(4, 2, 'Formal Shoes', NULL, 'formal-shoes', '', '', '', 1, NULL, '2018-05-02 08:58:00', '2018-05-02 08:58:00'),
+(5, 1, 'Casual T-Shirts', NULL, 'casual-t-shirts', '', '', '', 1, NULL, '2018-05-02 09:00:27', '2018-05-19 22:34:21'),
+(6, 1, 'Sports T-Shirts', 'test', 'sports-tshirts', '', '', '', 1, NULL, '2018-05-09 10:55:52', '2018-05-10 08:36:55'),
+(7, 1, 'Test T-shirts', 'tet', 'test', '', '', '', 0, NULL, '2018-05-09 10:56:56', '2018-05-09 10:56:56'),
+(8, 0, 'Shirts', NULL, 'shirts', '', '', '', 1, NULL, '2018-11-30 12:10:39', '2018-11-30 12:10:39'),
+(9, 0, 'Bags', 'bags', 'bags', '', '', '', 1, NULL, '2020-02-24 20:10:16', '2020-02-24 20:10:16'),
+(10, 9, 'Casual Bags', 'casual bags', 'casual-bags', '', '', '', 1, NULL, '2020-02-24 20:10:37', '2020-02-24 20:10:37'),
+(11, 1, 'Round T-shirt', 'Round T-shirt', 'round-tshirt', 'Round T-shirt', 'Round T-shirt at best prices', 'round-tshirt, best price, ecom website', 1, NULL, '2020-02-25 17:02:50', '2020-02-25 17:05:10');
 
 -- --------------------------------------------------------
 
@@ -135,6 +148,9 @@ CREATE TABLE `cms_pages` (
   `title` varchar(255) COLLATE utf8mb4_turkish_ci NOT NULL,
   `description` text COLLATE utf8mb4_turkish_ci NOT NULL,
   `url` varchar(30) COLLATE utf8mb4_turkish_ci NOT NULL,
+  `meta_title` varchar(255) COLLATE utf8mb4_turkish_ci NOT NULL,
+  `meta_description` varchar(255) COLLATE utf8mb4_turkish_ci NOT NULL,
+  `meta_keywords` varchar(255) COLLATE utf8mb4_turkish_ci NOT NULL,
   `status` tinyint(4) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
@@ -144,9 +160,10 @@ CREATE TABLE `cms_pages` (
 -- Tablo döküm verisi `cms_pages`
 --
 
-INSERT INTO `cms_pages` (`id`, `title`, `description`, `url`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'About Us', 'About US', 'about-us', 1, '2020-02-24 23:22:48', '2020-02-24 20:22:48'),
-(2, 'Terms & Conditions', 'Terms & Conditions', 'terms-conditions', 1, '2020-02-24 23:23:22', '2020-02-24 20:23:22');
+INSERT INTO `cms_pages` (`id`, `title`, `description`, `url`, `meta_title`, `meta_description`, `meta_keywords`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'About Us', 'About US', 'about-us', 'About Us', 'E-com website having lots of products.', 'about us', 1, '2020-02-24 23:22:48', '2020-02-25 16:50:42'),
+(2, 'Terms & Conditions', 'Terms & Conditions', 'terms-conditions', '', '', '', 1, '2020-02-24 23:23:22', '2020-02-24 20:23:22'),
+(4, 'Refund Policy', 'Page is coming soon..', 'refund-policy', 'E-com Website Refund Policy', 'Refund policy or our E-com Website before apply.', 'ecom website, refund policy', 1, '2020-02-25 19:38:10', '2020-02-25 16:44:12');
 
 -- --------------------------------------------------------
 
@@ -793,7 +810,7 @@ ALTER TABLE `admins`
 -- Tablo için AUTO_INCREMENT değeri `banners`
 --
 ALTER TABLE `banners`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `carts`
@@ -805,13 +822,13 @@ ALTER TABLE `carts`
 -- Tablo için AUTO_INCREMENT değeri `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `cms_pages`
 --
 ALTER TABLE `cms_pages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `countries`

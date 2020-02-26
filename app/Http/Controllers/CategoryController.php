@@ -18,11 +18,32 @@ class CategoryController extends Controller
             }else{
                 $status = 1;
             }
+            if(empty($data['meta_title'])){
+                $meta_title = "";
+            }
+            else{
+                $meta_title = $data['meta_title'];
+            }
+            if(empty($data['meta_description'])){
+                $meta_description = "";
+            }
+            else{
+                $meta_description = $data['meta_description'];
+            }
+            if(empty($data['meta_keywords'])){
+                $meta_keywords = "";
+            }
+            else{
+                $meta_keywords = $data['meta_keywords'];
+            }
             $category = new Category;
             $category->name = $data['category_name'];
             $category->parent_id = $data['parent_id'];
             $category->description = $data['description'];
             $category->url = $data['url'];
+            $category->meta_title=$meta_title;
+            $category->meta_description=$meta_description;
+            $category->meta_keywords=$meta_keywords;
             $category->status = $status;
             $category->save();
             return redirect('/admin/view-categories')->with('flash_message_success', 'New Category Added!');
@@ -40,7 +61,27 @@ class CategoryController extends Controller
             }else{
                 $status = 1;
             }
-            Category::where(['id' => $id])->update(['name' => $data['category_name'], 'description' => $data['description'], 'url' => $data['url'], 'status' => $status]);
+            if(empty($data['meta_title'])){
+                $meta_title = "";
+            }
+            else{
+                $meta_title = $data['meta_title'];
+            }
+            if(empty($data['meta_description'])){
+                $meta_description = "";
+            }
+            else{
+                $meta_description = $data['meta_description'];
+            }
+            if(empty($data['meta_keywords'])){
+                $meta_keywords = "";
+            }
+            else{
+                $meta_keywords = $data['meta_keywords'];
+            }
+            Category::where(['id' => $id])->update(['name' => $data['category_name'], 'description' => $data['description'], 'url' => $data['url'], 'status' => $status,
+                'meta_title'=>$meta_title,'meta_description'=>$meta_description,
+                'meta_keywords' => $meta_keywords]);
             return redirect('/admin/view-categories')->with('flash_message_success', 'Category Edited Succefully!');
         }
         $categoryDetails = Category::where(['id' => $id])->first();

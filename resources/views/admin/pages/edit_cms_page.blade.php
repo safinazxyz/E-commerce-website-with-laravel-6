@@ -52,6 +52,24 @@
                                     </div>
                                 </div>
                                 <div class="control-group">
+                                    <label class="control-label">Meta Title</label>
+                                    <div class="controls">
+                                        <input type="text" name="meta_title" id="meta_title" value="{{ $cmsPages->meta_title }}">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Meta Description</label>
+                                    <div class="controls">
+                                        <input type="text" name="meta_description" id="meta_description" value="{{ $cmsPages->meta_description }}">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Meta Keywords</label>
+                                    <div class="controls">
+                                        <input type="text" name="meta_keywords" id="meta_keywords" value="{{ $cmsPages->meta_keywords }}">
+                                    </div>
+                                </div>
+                                <div class="control-group">
                                     <label class="control-label">Enable</label>
                                     <div class="controls">
                                         <input type="checkbox" name="status" id="status"

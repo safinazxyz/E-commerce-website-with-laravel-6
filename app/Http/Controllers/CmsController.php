@@ -6,15 +6,37 @@ use App\Category;
 use App\CmsPage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Validator;
 
 class CmsController extends Controller
 {
     public function create(Request $request){
         if($request->isMethod('post')){
             $data = $request->all();
+            if(empty($data['meta_title'])){
+                $meta_title = "";
+            }
+            else{
+                $meta_title = $data['meta_title'];
+            }
+            if(empty($data['meta_description'])){
+                $meta_description = "";
+            }
+            else{
+                $meta_description = $data['meta_description'];
+            }
+            if(empty($data['meta_keywords'])){
+                $meta_keywords = "";
+            }
+            else{
+                $meta_keywords = $data['meta_keywords'];
+            }
             $cmspage = new CmsPage;
             $cmspage->title=$data['title'];
             $cmspage->description=$data['description'];
+            $cmspage->meta_title=$meta_title;
+            $cmspage->meta_description=$meta_description;
+            $cmspage->meta_keywords=$meta_keywords;
             $cmspage->url=$data['url'];
             if(empty($data['status'])){
                 $status = 0;
@@ -36,9 +58,28 @@ class CmsController extends Controller
             }else{
                 $status = 1;
             }
+            if(empty($data['meta_title'])){
+                $meta_title = "";
+            }
+            else{
+                $meta_title = $data['meta_title'];
+            }
+            if(empty($data['meta_description'])){
+                $meta_description = "";
+            }
+            else{
+                $meta_description = $data['meta_description'];
+            }
+            if(empty($data['meta_keywords'])){
+                $meta_keywords = "";
+            }
+            else{
+                $meta_keywords = $data['meta_keywords'];
+            }
             CmsPage::where('id',$id)->update(['title'=>$data['title'],
                 'url'=>$data['url'],'description'=>$data['description'],
-                'status'=>$status]);
+                'status'=>$status,'meta_title'=>$meta_title,'meta_description'=>$meta_description,
+                'meta_keywords' => $meta_keywords]);
             return redirect()->back()->with('flash_message_success','CMS Page has been updated successfully!');
         }
         $cmsPages = CmsPage::where('id',$id)->first();
@@ -61,6 +102,9 @@ class CmsController extends Controller
         if($cmsPageCount>0){
             //Get CMS Details
             $cmsPageDetails = CmsPage::where('url', $url)->first();
+            $meta_title = $cmsPageDetails->meta_title;
+            $meta_description = $cmsPageDetails->meta_description;
+            $meta_keywords = $cmsPageDetails->meta_keywords;
         }else{
             abort(404);
         }
@@ -90,12 +134,23 @@ class CmsController extends Controller
             </div>
             ";
         }
-        return view('pages.cms_page')->with(compact('cmsPageDetails','categories_menu','categories'));
+        return view('pages.cms_page')->with(compact('cmsPageDetails','categories_menu','categories',
+        'meta_title','meta_description','meta_keywords'));
     }
 
     public function contact(Request $request){
         if($request->isMethod('post')){
             $data = $request->all();
+
+            //Validation for Contact-Us Form
+            $validator = Validator::make($request->all(), [
+               'name' => 'required|regex:/^[\pL\s\-]+$/u|max:255',
+               'email' => 'required|email',
+               'subject' =>'required',
+            ]);
+            if($validator->fails()){
+                return rerdirect()->back()->withErrors($validator)->withInput();
+            }
 
             //Send Contact Email
             $email = "sultankaman93@gmail.com";
@@ -136,7 +191,12 @@ class CmsController extends Controller
             </div>
             ";
         }
-        return view('pages.contact')->with(compact('categories_menu','categories'));
+        //Meta  Tags
+        $meta_title= "Contact Us - E-shop Sample Website";
+        $meta_description = "Contact us for any queries related to our products";
+        $meta_keywords ="contact us, queries";
+        return view('pages.contact')->with(compact('categories_menu','categories',
+            'meta_title','meta_description','meta_keywords'));
     }
 
 }

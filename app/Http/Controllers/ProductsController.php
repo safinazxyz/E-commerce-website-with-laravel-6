@@ -363,7 +363,11 @@ class ProductsController extends Controller
             $productsAll = Product::where(['category_id' => $categoryDetails->id])->where('status', 1)->paginate(3);
 
         }
-        return view('products.listing')->with(compact('categories', 'categoryDetails', 'productsAll'));
+        $meta_title= $categoryDetails->meta_title;
+        $meta_description = $categoryDetails->meta_description;
+        $meta_keywords =$categoryDetails->meta_keywords;
+        return view('products.listing')->with(compact('categories', 'categoryDetails', 'productsAll',
+        'meta_title','meta_description','meta_keywords'));
     }
 
     public function product($id = null)
@@ -385,7 +389,12 @@ class ProductsController extends Controller
         //Count Total Stock of products
         $total_stock = ProductsAttribute::where('product_id', $id)->sum('stock');
 
-        return view('products.detail')->with(compact('productDetails', 'categories', 'productAltImages', 'total_stock', 'relatedProducts'));
+        $meta_title= $productDetails->product_name;
+        $meta_description = $productDetails->description;
+        $meta_keywords =$productDetails->product_name;
+
+        return view('products.detail')->with(compact('productDetails', 'categories', 'productAltImages',
+            'total_stock', 'relatedProducts','meta_title','meta_description','meta_keywords'));
     }
 
     public function getProductPrice(Request $request)
@@ -461,7 +470,10 @@ class ProductsController extends Controller
             $productDetails = Product::where('id', $product->product_id)->first();
             $userCart[$key]->image = $productDetails->image;
         }
-        return view('products.cart')->with(compact('userCart'));
+        $meta_title= "Shopping Cart - E-com Website";
+        $meta_description = "View Shopping cart of E-com Website";
+        $meta_keywords = "shopping cart, e-com Website";
+        return view('products.cart')->with(compact('userCart','meta_title','meta_description','meta_keywords'));
     }
 
     public function deleteCartProduct($id = null)
@@ -608,7 +620,9 @@ class ProductsController extends Controller
             }
             return redirect()->action('ProductsController@orderReview');
         }
-        return view('products.checkout')->with(compact('userDetails', 'countries', 'shippingDetails'));
+        $meta_title= "Checkout - E-com Website";
+        return view('products.checkout')->with(compact('userDetails', 'countries', 'shippingDetails',
+        'meta_title'));
     }
 
     public function orderReview(Request $request)
@@ -624,7 +638,8 @@ class ProductsController extends Controller
             $productDetails = Product::where('id', $product->product_id)->first();
             $userCart[$key]->image = $productDetails->image;
         }
-        return view('products.order_review')->with(compact('userDetails', 'shippingDetails', 'userCart'));
+        $meta_title= "Order Review - E-com Website";
+        return view('products.order_review')->with(compact('userDetails', 'shippingDetails', 'userCart','meta_title'));
     }
 
     public function placeOrder(Request $request)

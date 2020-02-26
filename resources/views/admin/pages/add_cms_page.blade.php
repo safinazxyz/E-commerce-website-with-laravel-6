@@ -34,19 +34,37 @@
                                 <div class="control-group">
                                     <label class="control-label">Title</label>
                                     <div class="controls">
-                                        <input type="text" name="title" id="title">
+                                        <input type="text" name="title" id="title" required="">
                                     </div>
                                 </div>
                                 <div class="control-group">
                                     <label class="control-label">Description</label>
                                     <div class="controls">
-                                        <textarea name="description" id="description"></textarea>
+                                        <textarea name="description" id="description" id="title"></textarea>
                                     </div>
                                 </div>
                                 <div class="control-group">
                                     <label class="control-label">Cms Page Url</label>
                                     <div class="controls">
-                                        <input type="text" name="url" id="url">
+                                        <input type="text" name="url" id="url" id="title" required="">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Meta Title</label>
+                                    <div class="controls">
+                                        <input type="text" name="meta_title" id="meta_title">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Meta Description</label>
+                                    <div class="controls">
+                                        <input type="text" name="meta_description" id="meta_description">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Meta Keywords</label>
+                                    <div class="controls">
+                                        <input type="text" name="meta_keywords" id="meta_keywords">
                                     </div>
                                 </div>
                                 <div class="control-group">
