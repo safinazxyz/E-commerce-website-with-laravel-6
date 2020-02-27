@@ -2,9 +2,6 @@
 @section('content')
     <section>
         <div class="container">
-            <diV id="app">
-                @{{  testmsg }}
-            </diV>
             <div class="row">
                 <div class="col-sm-3">
                     @include('layouts.frontLayout.front_sidebar')

@@ -273,3 +273,24 @@ function selectPaymentMethod() {
        return false;
    }
 }
+
+function  checkPincode() {
+    var pincode = $("#chkPincode").val();
+    if(pincode==""){
+        alert("Please enter Pincode"); return false;
+    }
+    $.ajax({
+       type:'post',
+       data:{pincode:pincode},
+       url:'/check-pincode',
+        success:function(resp){
+            if(resp>0){
+                $("#pincodeResponce").html("<div style='color:green;'>This pincode is available for delivery</div>");
+            }else{
+                $("#pincodeResponce").html("<div style='color:red;'>This pincode is not available for delivery</div>");
+            }
+        },error:function(){
+           alert("Error")
+        }
+    });
+}

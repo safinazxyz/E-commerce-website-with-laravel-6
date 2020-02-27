@@ -92,6 +92,12 @@
                                                 Out
                                                 of Stock</span> @endif</p>
                                     <p><b>Condition:</b> New</p>
+
+                                    <p><b>Delivery: </b>
+                                    <input type="text" name="pincode" id="chkPincode"
+                                    placeholder="Check Pincode">
+                                        <button type="button" onclick="return checkPincode();">Go</button>
+                                    <span id="pincodeResponce"></span></p>
                                     <p><b>Brand:</b> E-SHOPPER</p>
                                     <a href=""><img src="images/product-details/share.png" class="share img-responsive"
                                                     alt=""/></a>

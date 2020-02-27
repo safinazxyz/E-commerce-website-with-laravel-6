@@ -48,7 +48,7 @@
 <script src="{{asset('js/frontend_js/main.js') }}"></script>
 <script src="{{asset('js/frontend_js/jquery.validate.js') }}"></script>
 <script src="{{asset('js/frontend_js/passtrength.js') }}"></script>
-<script src="{{asset('js/app.js') }}"></script>
+<!--<script src="{{asset('js/app.js') }}"></script>-->
 </body>
 </html>
 <!--[if lt IE 9]>

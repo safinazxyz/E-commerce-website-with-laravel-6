@@ -567,7 +567,6 @@ class ProductsController extends Controller
             return redirect()->back()->with('flash_message_error', 'Please add a product to cart!');
         }
 
-
         //Check if Shipping Address exists
         $shippingCount = DeliveryAddress::where('user_id', $user_id)->count();
         $shippingDetails = array();
@@ -605,6 +604,7 @@ class ProductsController extends Controller
                     'pincode' => $data['shipping_pincode'],
                     'mobile' => $data['shipping_mobile']]);
             } else {
+
                 //Add New Shipping Address
                 $shipping = new DeliveryAddress;
                 $shipping->user_id = $user_id;
@@ -617,6 +617,10 @@ class ProductsController extends Controller
                 $shipping->pincode = $data['shipping_pincode'];
                 $shipping->mobile = $data['shipping_mobile'];
                 $shipping->save();
+            }
+            $pincodeCount = DB::table('pincodes')->where('pincode',$data['shipping_pincode'])->count();
+            if($pincodeCount == 0){
+                return redirect()->back()->with('flash_message_error','Your location is not available for delivery. Please enter another location.');
             }
             return redirect()->action('ProductsController@orderReview');
         }
@@ -638,8 +642,12 @@ class ProductsController extends Controller
             $productDetails = Product::where('id', $product->product_id)->first();
             $userCart[$key]->image = $productDetails->image;
         }
+        $codpincodeCount = DB::table('cod_pincodes')->where('pincode',$shippingDetails->pincode)->count();
+        $prepaidpincodeCount = DB::table('prepaid_pincodes')->where('pincode',$shippingDetails->pincode)->count();
+
         $meta_title= "Order Review - E-com Website";
-        return view('products.order_review')->with(compact('userDetails', 'shippingDetails', 'userCart','meta_title'));
+        return view('products.order_review')->with(compact('userDetails', 'shippingDetails',
+            'userCart','meta_title','codpincodeCount','prepaidpincodeCount'));
     }
 
     public function placeOrder(Request $request)
@@ -652,6 +660,11 @@ class ProductsController extends Controller
             //Get Shipping Address of User
             $shippingDetails = DeliveryAddress::where(['user_email' => $user_email])->first();
 
+            $pincodeCount = DB::table('pincodes')->where('pincode',$shippingDetails->pincode)->count();
+            if($pincodeCount == 0){
+                return redirect()->back()->with('flash_message_error','Your location is not available for delivery. Please enter another location.');
+
+            }
             if (empty(Session::get('CouponCode'))) {
                 $coupon_code = "";
             } else {
@@ -793,6 +806,13 @@ class ProductsController extends Controller
             $search_product = $data['product'];
             $productsAll = Product::where('product_name', 'like', '%' . $search_product . '%')->orwhere('product_code', $search_product)->where('status', 1)->get();
             return view('products.listing')->with(compact('categories', 'search_product', 'productsAll'));
+        }
+    }
+
+    public function checkPincode(Request $request){
+        if($request->isMethod('post')){
+            $data = $request->all();
+            return $pincodeCount = DB::table('pincodes')->where('pincode',$data['pincode'])->count();
         }
     }
 }

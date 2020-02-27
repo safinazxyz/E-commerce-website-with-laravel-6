@@ -1,4 +1,3 @@
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -20,7 +19,7 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('example-component', require('./components/ExampleComponent.vue'));
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -30,7 +29,17 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 const app = new Vue({
     el: '#app',
-    data:{
-        testmsg:'test message'
+    data: {
+        testmsg: 'Post data via Vue.js 2 and Axios',
+        responsemsg:''
+    },
+    methods: {
+        addPost() {
+            axios.post('/page/post', {name: this.name, email: this.email, subject: this.subject, message: this.message})
+                /*.then(post => this.$emit('completed',name));*/
+                .then(function (response) {
+                    app.responsemsg = response.data;
+                })
+        }
     }
 });

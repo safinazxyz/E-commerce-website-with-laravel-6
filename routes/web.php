@@ -65,6 +65,9 @@ Route::get('/user-logout', 'UsersController@logout');
 //Search Products
 Route::post('/search-products','ProductsController@searchProducts');
 
+//Check if User already exist
+Route::match(['get', 'post'], '/check-email', 'UsersController@checkEmail');
+
 //All Routes after Login
 Route::group(['middleware' => ['frontlogin']], function () {
     //User Account  Page
@@ -89,8 +92,8 @@ Route::group(['middleware' => ['frontlogin']], function () {
     Route::get('/orders/{id}', 'ProductsController@userOrderDetails');
 });
 
-//Check if User already exist
-Route::match(['get', 'post'], '/check-email', 'UsersController@checkEmail');
+//Check Pincode
+Route::post('/check-pincode','ProductsController@checkPincode');
 
 Route::group(['middleware' => ['adminlogin']], function () {
     Route::get('/admin/dashboard', 'AdminController@dashboard');
@@ -152,6 +155,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // Display Contact Page
 Route::match(['get','post'],'/page/contact','CmsController@contact');
+
+// Display Post Page (for Vue.js)
+Route::match(['get','post'],'/page/post','CmsController@addPost');
+
 
 //Route for Display Front-End CMS Pages
 Route::match(['get', 'post'], '/page/{url}', 'CmsController@cmsPage');

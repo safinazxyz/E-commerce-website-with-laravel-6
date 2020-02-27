@@ -49327,7 +49327,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-Vue.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue")["default"]);
+Vue.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue"));
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -49337,7 +49337,22 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 var app = new Vue({
   el: '#app',
   data: {
-    testmsg: 'test message'
+    testmsg: 'Post data via Vue.js 2 and Axios',
+    responsemsg: ''
+  },
+  methods: {
+    addPost: function addPost() {
+      axios.post('/page/post', {
+        name: this.name,
+        email: this.email,
+        subject: this.subject,
+        message: this.message
+      })
+      /*.then(post => this.$emit('completed',name));*/
+      .then(function (response) {
+        app.responsemsg = response.data;
+      });
+    }
   }
 });
 
