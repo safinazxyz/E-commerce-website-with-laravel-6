@@ -54,7 +54,7 @@ Route::match(['get', 'post'], 'forgot-password', 'UsersController@forgotPassword
 Route::post('/user-register', 'UsersController@register');
 
 //Confirm Account
-Route::get('confirm/{code}','UsersController@confirmAccount');
+Route::get('confirm/{code}', 'UsersController@confirmAccount');
 
 //User Login
 Route::post('/user-login', 'UsersController@login');
@@ -63,7 +63,7 @@ Route::post('/user-login', 'UsersController@login');
 Route::get('/user-logout', 'UsersController@logout');
 
 //Search Products
-Route::post('/search-products','ProductsController@searchProducts');
+Route::post('/search-products', 'ProductsController@searchProducts');
 
 //Check if User already exist
 Route::match(['get', 'post'], '/check-email', 'UsersController@checkEmail');
@@ -93,7 +93,7 @@ Route::group(['middleware' => ['frontlogin']], function () {
 });
 
 //Check Pincode
-Route::post('/check-pincode','ProductsController@checkPincode');
+Route::post('/check-pincode', 'ProductsController@checkPincode');
 
 Route::group(['middleware' => ['adminlogin']], function () {
     Route::get('/admin/dashboard', 'AdminController@dashboard');
@@ -111,6 +111,7 @@ Route::group(['middleware' => ['adminlogin']], function () {
     Route::match(['get', 'post'], '/admin/add-product', 'ProductsController@create');
     Route::match(['get', 'post'], '/admin/edit-product/{id}', 'ProductsController@edit');
     Route::get('/admin/delete-product-image/{id}', 'ProductsController@deleteProductImage');
+    Route::get('/admin/delete-product-video/{id}', 'ProductsController@deleteProductVideo');
     Route::get('/admin/delete-product/{id}', 'ProductsController@delete');
     Route::get('/admin/view-products', 'ProductsController@view');
     Route::get('/admin/delete-alt-image/{id}', 'ProductsController@deleteAltImage');
@@ -134,7 +135,7 @@ Route::group(['middleware' => ['adminlogin']], function () {
     //Admin View Order Details
     Route::get('/admin/view-orders-detail/{id}', 'ProductsController@viewOrdersDetail');
     //Order Invoice
-    Route::get('admin/view-order-invoice/{id}','ProductsController@viewOrderInvoice');
+    Route::get('admin/view-order-invoice/{id}', 'ProductsController@viewOrderInvoice');
     //Update Order Status
     Route::post('/admin/update-order-status', 'ProductsController@updateOrderStatus');
     //Admin Users Route
@@ -145,6 +146,18 @@ Route::group(['middleware' => ['adminlogin']], function () {
     Route::match(['get', 'post'], '/admin/edit-cms-page/{id}', 'CmsController@edit');
     Route::match(['get', 'post'], '/admin/delete-cms-page/{id}', 'CmsController@delete');
     Route::get('/admin/view-cms-pages', 'CmsController@view');
+
+    //Admin GET Enquiries getPage
+    Route::get('/admin/get-enquiries', 'CmsController@getEnquiries');
+
+    //Admin VIEW Enquiries Page
+    Route::get('/admin/view-enquiries', 'CmsController@viewEnquiries');
+
+    //Currency Route
+    Route::match(['get', 'post'], '/admin/add-currency', 'CurrencyController@create');
+    Route::match(['get', 'post'], '/admin/edit-currency/{id}', 'CurrencyController@edit');
+    Route::get('/admin/view-currencies', 'CurrencyController@view');
+
 });
 
 Route::get('/logout', 'AdminController@logout');
@@ -154,10 +167,10 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 // Display Contact Page
-Route::match(['get','post'],'/page/contact','CmsController@contact');
+Route::match(['get', 'post'], '/page/contact', 'CmsController@contact');
 
 // Display Post Page (for Vue.js)
-Route::match(['get','post'],'/page/post','CmsController@addPost');
+Route::match(['get', 'post'], '/page/post', 'CmsController@addPost');
 
 
 //Route for Display Front-End CMS Pages

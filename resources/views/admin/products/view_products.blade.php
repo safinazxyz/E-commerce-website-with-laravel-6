@@ -56,7 +56,7 @@
                                         <td>{{ $pro->product_code }}</td>
                                         <td>{{ $pro->product_color}}</td>
                                         <td>{{ $pro->description }}</td>
-                                        <td>{{ $pro->price }}</td>
+                                        <td>{{ $pro->price }} TL</td>
                                         <td>
                                             @if(!empty($pro->image))
                                                 <img
@@ -87,7 +87,7 @@
                                             <p>Category ID: {{ $pro->category_id }}</p>
                                             <p>Product Code: {{ $pro->product_code }}</p>
                                             <p>Product Color: {{ $pro->product_color }}</p>
-                                            <p>Price: {{ $pro->price }}</p>
+                                            <p>Price: {{ $pro->price }} TL</p>
                                             <p>Description: {{ $pro->description }}</p>
                                         </div>
                                     </div>

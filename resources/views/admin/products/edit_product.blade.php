@@ -73,11 +73,25 @@
                                         @if(!empty($productDetails->image))
                                             <input type="hidden" name="current_image"
                                                    value="{{ $productDetails->image }}">
-
                                             <img style="width: 40px;"
                                                  src="{{ asset('/images/backend_images/products/small/'.$productDetails->image) }} ">
                                             <a id="delProdImg"
                                                href="{{ url('/admin/delete-product-image/'.$productDetails->id) }}"
+                                               class="btn btn-danger btn-mini">Delete</a>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Video</label>
+                                    <div class="controls">
+                                        <input type="file" name="video" id="video">
+                                        @if(!empty($productDetails->video))
+                                            <input type="hidden" name="current_video"
+                                                   value="{{ $productDetails->video }}">
+                                            <span>{{ $productDetails->video }}</span>
+                                        <span style="color:green;text-decoration: underline;margin-left: 10px;margin-right: 10px;"><a target="_blank" href="{{ url('videos/'.$productDetails->video) }}">View</a></span>
+                                            <a id="delProdImg"
+                                               href="{{ url('/admin/delete-product-video/'.$productDetails->id) }}"
                                                class="btn btn-danger btn-mini">Delete</a>
                                         @endif
                                     </div>

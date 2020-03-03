@@ -111,7 +111,7 @@
                                 <p>{{ $cart->product_code }} | {{ $cart->size }}</p>
                             </td>
                             <td class="cart_price">
-                                <p>TL {{ $cart->price }}</p>
+                                <p>{{ $cart->price }} TL</p>
                             </td>
                             <td class="cart_quantity">
                                 <div class="cart_quantity_button">
@@ -127,7 +127,7 @@
                                 </div>
                             </td>
                             <td class="cart_total">
-                                <p class="cart_total_price">TL {{ $cart->price*$cart->quantity }}</p>
+                                <p class="cart_total_price">{{ $cart->price*$cart->quantity }} TL</p>
                             </td>
                             <td class="cart_delete">
                                 <a class="cart_quantity_delete deleteRecord'"
@@ -142,25 +142,25 @@
                             <table class="table table-condensed total-result">
                                 <tr>
                                     <td>Cart Sub Total</td>
-                                    <td>TL {{$total_amount}}</td>
+                                    <td>{{$total_amount}} TL</td>
                                 </tr>
                                 <tr class="shipping-cost">
                                     <td>Shipping Cost (+)</td>
-                                    <td>TL 0</td>
+                                    <td>0 TL</td>
                                 </tr>
                                 <tr class="shipping-cost">
                                     <td>Discount Amount (-)</td>
                                     <td>
                                         @if(!empty(Session::get('CouponAmount')))
-                                            TL {{ Session::get('CouponAmount')}}</td>
+                                            {{ Session::get('CouponAmount')}} TL</td>
                                     @else
-                                        TL 0
+                                        0 TL
                                     @endif
                                 </tr>
                                 <tr>
                                     <td>Grand Total</td>
                                     <td>
-                                        <span>TL {{ $grand_total = $total_amount - Session::get('CouponAmount') }}</span>
+                                        <span>{{ $grand_total = $total_amount - Session::get('CouponAmount') }} TL</span>
                                     </td>
                                 </tr>
                             </table>

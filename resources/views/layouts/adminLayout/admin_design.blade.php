@@ -40,6 +40,7 @@
 <script src="{{asset('js/backend_js/matrix.tables.js') }}"></script>
 <script src="{{asset('js/backend_js/matrix.popover.js') }}"></script>
 <script src="{{asset('js/backend_js/jquery-ui.js') }}"></script>
+<script src="{{asset('js/app.js') }}"></script>
 <script>
     $( function() {
         $( "#expiry_date" ).datepicker({

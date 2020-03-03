@@ -87,7 +87,7 @@
                         <h2>Service</h2>
                         <ul class="nav nav-pills nav-stacked">
                             <li><a href="#">Online Help</a></li>
-                            <li><a href="{{ url('/page/contact') }}">Contact Us</a></li>
+                            <li><a href="{{ url('/page/post') }}">Contact Us</a></li>
                             <li><a href="#">Order Status</a></li>
                             <li><a href="#">Change Location</a></li>
                             <li><a href="#">FAQ’s</a></li>

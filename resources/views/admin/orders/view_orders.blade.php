@@ -54,7 +54,7 @@
                                                 {{ $pro->product_code }} || {{ $pro->product_name }} <br>
                                             @endforeach
                                         </td>
-                                        <td>TL {{ $order->grand_total }}</td>
+                                        <td>{{ $order->grand_total }} TL</td>
                                         <td>{{ $order->order_status }}</td>
                                         <td>{{ $order->payment_method }}</td>
 

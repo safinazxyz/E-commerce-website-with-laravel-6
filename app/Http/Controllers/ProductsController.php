@@ -11,6 +11,7 @@ use App\Cart;
 use App\User;
 use Illuminate\Http\Request;
 use Auth;
+use Illuminate\Support\Facades\Input;
 use Session;
 use Image;
 use App\Product;
@@ -66,6 +67,15 @@ class ProductsController extends Controller
                     $product->image = $filename;
                 }
             }
+            //Upload Video
+            if($request->hasFile('video')){
+                $video_tmp = Input::file('video');
+                $video_name = $video_tmp->getClientOriginalName();
+                $video_path = 'videos/';
+                $video_tmp->move($video_path,$video_name);
+                $product->video = $video_name;
+            }
+
             if (empty($data['status'])) {
                 $status = 0;
             } else {
@@ -150,6 +160,18 @@ class ProductsController extends Controller
             } else {
                 $filename = "";
             }
+            //Upload Video
+            if($request->hasFile('video')){
+                $video_tmp = Input::file('video');
+                $video_name = $video_tmp->getClientOriginalName();
+                $video_path = 'videos/';
+                $video_tmp->move($video_path,$video_name);
+                $videoName = $video_name;
+            }else if (!empty($data['current_video'])) {
+                $videoName = $data['current_video'];
+            } else {
+                $videoName = "";
+            }
             if (empty($data['description'])) {
                 $data['description'] = "";
             }
@@ -169,8 +191,8 @@ class ProductsController extends Controller
             //UPDATE ALL!
             Product::where(['id' => $id])->update(['category_id' => $data['category_id'],
                 'product_name' => $data['product_name'], 'product_code' => $data['product_code'], 'product_color' => $data['product_color'],
-                'price' => $data['price'], 'description' => $data['description'], 'care' => $data['care'], 'image' => $filename, 'status' => $status
-            ,'feature_item' => $feature_item]);
+                'price' => $data['price'], 'description' => $data['description'], 'care' => $data['care'], 'image' => $filename,
+                'video' => $videoName, 'status' => $status ,'feature_item' => $feature_item]);
             return redirect('/admin/view-products')->with('flash_message_success', 'Product Edited Successfully!');
         }
 
@@ -200,7 +222,24 @@ class ProductsController extends Controller
         //Delete Image from Products
         if (!empty($id)) {
             Product::where(['id' => $id])->update(['image' => ""]);
-            return redirect()->back()->with('flash_message_success', 'Product Deleted Successfully!');
+            return redirect()->back()->with('flash_message_success', 'Product Image Deleted Successfully!');
+        }
+    }
+
+    public function deleteProductVideo($id = null)
+    {
+        //Get Product Image Name
+        $productVideo = Product::where(['id' => $id])->first();  //video name
+        $video_path = 'videos/';
+
+        //Delete Video if not exists inFolder
+        if (file_exists($video_path . $productVideo->video)) {
+            unlink($video_path . $productVideo->video);
+        }
+        //Delete Image from Products
+        if (!empty($id)) {
+            Product::where(['id' => $id])->update(['video' => ""]);
+            return redirect()->back()->with('flash_message_success', 'Product Video Deleted Successfully!');
         }
     }
 
@@ -357,10 +396,10 @@ class ProductsController extends Controller
                 $cat_ids[] = $subcat->id;
             }
 
-            $productsAll = Product::whereIn('category_id', $cat_ids)->where('status', 1)->paginate(3);
+            $productsAll = Product::whereIn('category_id', $cat_ids)->where('status', 1)->orderBy('id','DESC')->paginate(3);
         } else {
             //if url is sub category url
-            $productsAll = Product::where(['category_id' => $categoryDetails->id])->where('status', 1)->paginate(3);
+            $productsAll = Product::where(['category_id' => $categoryDetails->id])->where('status', 1)->orderBy('id','DESC')->paginate(3);
 
         }
         $meta_title= $categoryDetails->meta_title;

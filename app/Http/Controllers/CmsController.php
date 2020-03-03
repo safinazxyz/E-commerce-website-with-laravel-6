@@ -240,4 +240,12 @@ class CmsController extends Controller
         return view('pages.post')->with(compact('categories_menu','categories'));
     }
 
+    public function getEnquiries(){
+        $enquiries = Enquiry::orderBy('id','Desc')->get();
+        return $enquiries;
+    }
+    public function viewEnquiries(){
+        $enquiries = Enquiry::orderBy('id','Desc')->get();
+        return view('admin.enquiries.view_enquiries')->with(compact('enquiries'));
+    }
 }

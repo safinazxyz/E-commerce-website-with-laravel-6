@@ -43,6 +43,17 @@
                 <li <?php if(preg_match("/view-cms-pages/i",$url)) { ?> class="active" <?php } ?>><a href="{{url('/admin/view-cms-pages')}}">View Cms Pages</a></li>
             </ul>
         </li>
+        <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Currencies</span> <span class="label label-important">2</span></a>
+            <ul <?php if(preg_match("/currencies/i",$url)) { ?> style="display: block;" <?php } ?>>
+                <li <?php if(preg_match("/add-currency/i",$url)) { ?> class="active" <?php } ?>><a href="{{url('/admin/add-currency')}}">Add Curreny</a></li>
+                <li <?php if(preg_match("/view-currencies/i",$url)) { ?> class="active" <?php } ?>><a href="{{url('/admin/view-currencies')}}">View Currencies</a></li>
+            </ul>
+        </li>
+        <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Enquiries</span> <span class="label label-important">1</span></a>
+            <ul <?php if(preg_match("/enquiries/i",$url)) { ?> style="display: block;" <?php } ?>>
+                <li <?php if(preg_match("/view-enquiries/i",$url)) { ?> class="active" <?php } ?>><a href="{{url('/admin/view-enquiries')}}">View Enquiries</a></li>
+            </ul>
+        </li>
         <?php /*
         //Removed unwanted tabs.
         <li> <a href="charts.html"><i class="icon icon-signal"></i> <span>Charts &amp; graphs</span></a> </li>

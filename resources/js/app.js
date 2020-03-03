@@ -30,8 +30,18 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
 const app = new Vue({
     el: '#app',
     data: {
-        testmsg: 'Post data via Vue.js 2 and Axios',
-        responsemsg:''
+        testmsg: 'CONTACT US',
+        responsemsg:'',
+        enquiries:[],
+    },
+    ready:function(){
+      this.created();
+    },
+    created(){
+        axios.get('/admin/get-enquiries')
+            .then(response => {
+                this.enquiries = response.data;
+            })
     },
     methods: {
         addPost() {

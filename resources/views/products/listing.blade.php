@@ -1,3 +1,5 @@
+<?php
+?>
 @extends('layouts.frontLayout.front_design')
 @section('content')
 
@@ -90,6 +92,7 @@
                             @else
                                 {{$categoryDetails->name}} ITEM
                             @endif
+                                ({{ count($productsAll) }})
                         </h2>
                         @foreach($productsAll as $product)
                             <div class="col-sm-4">
@@ -99,7 +102,7 @@
                                             <img
                                                 src="{{asset('/images/backend_images/products/small/'.$product->image) }}"
                                                 alt=""/>
-                                            <h2>${{$product->price}}</h2>
+                                            <h2>{{$product->price}} TL</h2>
                                             <p>{{$product->product_name}}</p>
                                             <a href="{{asset('/product/'.$product->id) }}"
                                                class="btn btn-default add-to-cart"><i
@@ -107,7 +110,7 @@
                                         </div>
                                         <div class="product-overlay">
                                             <div class="overlay-content">
-                                                <h2>${{$product->price}}</h2>
+                                                <h2>{{$product->price}} TL</h2>
                                                 <p>{{$product->product_name}}</p>
                                                 <a href="{{asset('/product/'.$product->id) }}"
                                                    class="btn btn-default add-to-cart"><i

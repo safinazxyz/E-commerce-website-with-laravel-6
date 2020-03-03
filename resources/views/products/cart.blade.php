@@ -48,7 +48,7 @@
                                 <p>{{ $cart->product_code }} | {{ $cart->size }}</p>
                             </td>
                             <td class="cart_price">
-                                <p>TL {{ $cart->price }}</p>
+                                <p>{{ $cart->price }} TL</p>
                             </td>
                             <td class="cart_quantity">
                                 <div class="cart_quantity_button">
@@ -64,7 +64,7 @@
                                 </div>
                             </td>
                             <td class="cart_total">
-                                <p class="cart_total_price">TL {{ $cart->price*$cart->quantity }}</p>
+                                <p class="cart_total_price">{{ $cart->price*$cart->quantity }} TL</p>
                             </td>
                             <td class="cart_delete">
                                 <a class="cart_quantity_delete deleteRecord'"
@@ -105,15 +105,15 @@
 
                         <a class="btn btn-default update" href="">Update</a> <ul>
                             @if(!empty(Session::get('CouponAmount')))
-                                <li>Sub Total <span>TL <?php echo $total_amount; ?></span></li>
-                                <li>Coupon Discount <span>TL <?php echo Session::get('CouponAmount'); ?></span></li>
+                                <li>Sub Total <span><?php echo $total_amount; ?> TL</span></li>
+                                <li>Coupon Discount <span><?php echo Session::get('CouponAmount'); ?> TL</span></li>
                                 <p style="vertical-align: middle;margin: 0; font-size: 24px;">-</p>
                                 <hr style="margin-top: 0;">
-                                <li>Grand Total <span>TL <?php echo $total_amount-Session::get('CouponAmount'); ?></span></li>
+                                <li>Grand Total <span><?php echo $total_amount-Session::get('CouponAmount'); ?> TL</span></li>
                             @else
                                 <p style="vertical-align: middle;margin: 0; font-size: 24px;">-</p>
                                 <hr>
-                                <li>Grand Total <span>TL <?php echo $total_amount; ?></span></li>
+                                <li>Grand Total <span><?php echo $total_amount; ?> TL</span></li>
                             @endif
                         </ul>
                         <a class="btn btn-default check_out" href="{{ url('/checkout') }}">Check Out</a>

@@ -72,13 +72,14 @@
                                             </option>
                                             @foreach($productDetails->attributes as $sizes)
                                                 <option
-                                                    value="{{$productDetails->id}}-{{ $sizes->size }}" required>{{ $sizes->size }}</option>
+                                                    value="{{$productDetails->id}}-{{ $sizes->size }}"
+                                                    required>{{ $sizes->size }}</option>
                                             @endforeach
                                         </select>
                                     </p>
                                     <img src="images/product-details/rating.png" alt=""/>
                                     <span>
-									<span id="getPrice">TL {{ $productDetails->price }}</span>
+									<span id="getPrice">{{ $productDetails->price }} TL</span>
 									<label>Quantity:</label>
 									<input type="text" name="quantity" value="1"/>
                                     @if($total_stock>0)
@@ -94,10 +95,10 @@
                                     <p><b>Condition:</b> New</p>
 
                                     <p><b>Delivery: </b>
-                                    <input type="text" name="pincode" id="chkPincode"
-                                    placeholder="Check Pincode">
+                                        <input type="text" name="pincode" id="chkPincode"
+                                               placeholder="Check Pincode">
                                         <button type="button" onclick="return checkPincode();">Go</button>
-                                    <span id="pincodeResponce"></span></p>
+                                        <span id="pincodeResponce"></span></p>
                                     <p><b>Brand:</b> E-SHOPPER</p>
                                     <a href=""><img src="images/product-details/share.png" class="share img-responsive"
                                                     alt=""/></a>
@@ -112,6 +113,9 @@
                                 <li class="active"><a href="#description" data-toggle="tab">Description</a></li>
                                 <li><a href="#care" data-toggle="tab">Material & Care</a></li>
                                 <li><a href="#delivery" data-toggle="tab">Delivery Options</a></li>
+                                @if(!empty($productDetails->video))
+                                    <li><a href="#video" data-toggle="tab">Video</a></li>
+                                @endif
                             </ul>
                         </div>
                         <div class="tab-content">
@@ -120,70 +124,76 @@
                                     <p>{{ $productDetails->description }}</p>
                                 </div>
                             </div>
-
                             <div class="tab-pane fade" id="care">
                                 <div class="col-sm-12">
                                     <p>{{ $productDetails->care }}</p>
                                 </div>
                             </div>
-
                             <div class="tab-pane fade" id="delivery">
                                 <div class="col-sm-12">
                                     <p>100% Original Products<br>Cash on delivery</p>
                                 </div>
                             </div>
-                        </div>
-                    </div><!--/category-tab-->
+                            @if(!empty($productDetails->video))
+                                <div class="tab-pane fade" id="video">
+                                    <div class="col-sm-12">
+                                        <video controls>
+                                            <source src="{{ url('videos/'.$productDetails->video) }}">
+                                        </video>
+                                    </div>
+                                </div>
+                            @endif
+                        </div><!--/category-tab-->
 
-                    <div class="recommended_items"><!--recommended_items-->
-                        <h2 class="title text-center">recommended items</h2>
+                        <div class="recommended_items"><!--recommended_items-->
+                            <h2 class="title text-center">recommended items</h2>
 
-                        <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
-                            <div class="carousel-inner">
-                                <?php $count = 1; ?>
-                                @foreach($relatedProducts->chunk(3) as $chunk)
-                                    <div <?php if($count == 1){ ?> class="item active"> <?php } else { ?>
-                                        class="item" <?php } ?>>
+                            <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
+                                <div class="carousel-inner">
+                                    <?php $count = 1; ?>
+                                    @foreach($relatedProducts->chunk(3) as $chunk)
+                                        <div <?php if($count == 1){ ?> class="item active"> <?php } else { ?>
+                                            class="item" <?php } ?>>
 
-                                        @foreach($chunk as $item)
-                                            <div class="col-sm-4">
-                                                <div class="product-image-wrapper">
-                                                    <div class="single-products">
-                                                        <div class="productinfo text-center">
-                                                            <img style="width: 230px;"
-                                                                 src="{{asset('images/backend_images/products/medium/'.$item->image)}}"
-                                                                 alt=""/>
-                                                            <h2>TL{{ $item->price}}</h2>
-                                                            <p>{{$item->product_name}}</p>
-                                                            <a href="{{url('product/'.$item->id)}}">
-                                                                <button type="button"
-                                                                        class="btn btn-default add-to-cart"><i
-                                                                        class="fa fa-shopping-cart"></i>Add to cart
-                                                                </button>
-                                                            </a>
+                                            @foreach($chunk as $item)
+                                                <div class="col-sm-4">
+                                                    <div class="product-image-wrapper">
+                                                        <div class="single-products">
+                                                            <div class="productinfo text-center">
+                                                                <img style="width: 230px;"
+                                                                     src="{{asset('images/backend_images/products/medium/'.$item->image)}}"
+                                                                     alt=""/>
+                                                                <h2>{{ $item->price}} TL</h2>
+                                                                <p>{{$item->product_name}}</p>
+                                                                <a href="{{url('product/'.$item->id)}}">
+                                                                    <button type="button"
+                                                                            class="btn btn-default add-to-cart"><i
+                                                                            class="fa fa-shopping-cart"></i>Add to cart
+                                                                    </button>
+                                                                </a>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                    <?php $count++; ?>
-                                @endforeach
+                                            @endforeach
+                                        </div>
+                                        <?php $count++; ?>
+                                    @endforeach
+                                </div>
+                                <a class="left recommended-item-control" href="#recommended-item-carousel"
+                                   data-slide="prev">
+                                    <i class="fa fa-angle-left"></i>
+                                </a>
+                                <a class="right recommended-item-control" href="#recommended-item-carousel"
+                                   data-slide="next">
+                                    <i class="fa fa-angle-right"></i>
+                                </a>
                             </div>
-                            <a class="left recommended-item-control" href="#recommended-item-carousel"
-                               data-slide="prev">
-                                <i class="fa fa-angle-left"></i>
-                            </a>
-                            <a class="right recommended-item-control" href="#recommended-item-carousel"
-                               data-slide="next">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
-                        </div>
-                    </div><!--/recommended_items-->
+                        </div><!--/recommended_items-->
 
+                    </div>
                 </div>
             </div>
-        </div>
     </section>
 @endsection
 

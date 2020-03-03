@@ -40,11 +40,11 @@
                                 </tr>
                                 <tr>
                                     <td class="taskDesc">Order Total</td>
-                                    <td class="taskStatus">TL {{  $orderDetails->grand_total }}</td>
+                                    <td class="taskStatus">{{  $orderDetails->grand_total }} TL</td>
                                 </tr>
                                 <tr>
                                     <td class="taskDesc">Shipping Charge</td>
-                                    <td class="taskStatus">TL {{  $orderDetails->shipping_charges }}</td>
+                                    <td class="taskStatus">{{  $orderDetails->shipping_charges }} TL</td>
                                 </tr>
                                 <tr>
                                     <td class="taskDesc">Coupon Code</td>
@@ -52,7 +52,7 @@
                                 </tr>
                                 <tr>
                                     <td class="taskDesc">Coupon Amount</td>
-                                    <td class="taskStatus">TR {{  $orderDetails->coupon_amount }}</td>
+                                    <td class="taskStatus">{{  $orderDetails->coupon_amount }} TL</td>
                                 </tr>
                                 <tr>
                                     <td class="taskDesc">Payment Method</td>
@@ -181,7 +181,7 @@
                             <td>{{ $order->product_size }}</td>
                             <td>{{ $order->product_color }}</td>
                             <td>{{ $order->product_qty }}</td>
-                            <td>TL {{ $order->product_price }}</td>
+                            <td>{{ $order->product_price }} TL</td>
                         </tr>
                     @endforeach
                     </tbody>

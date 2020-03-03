@@ -49337,8 +49337,19 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 var app = new Vue({
   el: '#app',
   data: {
-    testmsg: 'Post data via Vue.js 2 and Axios',
-    responsemsg: ''
+    testmsg: 'CONTACT US',
+    responsemsg: '',
+    enquiries: []
+  },
+  ready: function ready() {
+    this.created();
+  },
+  created: function created() {
+    var _this = this;
+
+    axios.get('/admin/get-enquiries').then(function (response) {
+      _this.enquiries = response.data;
+    });
   },
   methods: {
     addPost: function addPost() {
