@@ -1,5 +1,6 @@
 @extends('layouts.frontLayout.front_design')
 @section('content')
+    <?php use App\Product; ?>
     <section>
         <div class="container">
             <div class="row">
@@ -79,17 +80,25 @@
                                     </p>
                                     <img src="images/product-details/rating.png" alt=""/>
                                     <span>
-									<span id="getPrice">{{ $productDetails->price }} TL</span>
-									<label>Quantity:</label>
-									<input type="text" name="quantity" value="1"/>
+                                        <?php $getCurrencyRates = Product::getCurrencyRates($productDetails->price); ?>
+									<span id="getPrice">{{ $productDetails->price }} TL
+                                            <h2>
+                                                USD {{ $getCurrencyRates['USD_Rate'] }}<br>
+                                                EUR {{ $getCurrencyRates['EUR_Rate'] }}<br>
+                                                GBP {{ $getCurrencyRates['GBP_Rate'] }}<br>
+                                            </h2>
+                                    </span>
+                                    <label>Quantity:</label>
+                                    <input type="text" name="quantity" value="1"/>
                                     @if($total_stock>0)
                                             <button type="submit" class="btn btn-fefault cart" id="chartButton">
-										<i class="fa fa-shopping-cart"></i>
-										Add to cart
-									</button>
+                                            <i class="fa fa-shopping-cart"></i>
+                                            Add to cart
+                                        </button>
                                         @endif
-								</span>
-                                    <p><b>Availability:</b> <span id="Availability">@if($total_stock>0) In Stock @else
+                                        </span>
+                                    <p><b>Availability:</b> <span id="Availability">@if($total_stock>0) In
+                                            Stock @else
                                                 Out
                                                 of Stock</span> @endif</p>
                                     <p><b>Condition:</b> New</p>
@@ -100,7 +109,8 @@
                                         <button type="button" onclick="return checkPincode();">Go</button>
                                         <span id="pincodeResponce"></span></p>
                                     <p><b>Brand:</b> E-SHOPPER</p>
-                                    <a href=""><img src="images/product-details/share.png" class="share img-responsive"
+                                    <a href=""><img src="images/product-details/share.png"
+                                                    class="share img-responsive"
                                                     alt=""/></a>
                                 </div><!--/product-information-->
                             </form>

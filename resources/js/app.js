@@ -31,17 +31,28 @@ const app = new Vue({
     el: '#app',
     data: {
         testmsg: 'CONTACT US',
-        responsemsg:'',
-        enquiries:[],
+        responsemsg: '',
+        search: '',
+        enquiries: [],
     },
-    ready:function(){
-      this.created();
+    ready: function () {
+        this.created();
     },
-    created(){
+    created() {
         axios.get('/admin/get-enquiries')
             .then(response => {
                 this.enquiries = response.data;
             })
+            .catch(function (error) {
+                console.log(error);
+            });
+    },
+    computed: {
+        filteredEnquiries() {
+            return this.enquiries.filter(enquiry => {
+                return enquiry.name.toLowerCase().includes(this.search.toLowerCase());
+            })
+        }
     },
     methods: {
         addPost() {

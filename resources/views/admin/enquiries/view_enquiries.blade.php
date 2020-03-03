@@ -29,6 +29,8 @@
                         </div>
                         <div class="widget-content nopadding">
                             <div id="app">
+                                <input style="margin-top: 10px;margin-left: 5px;" class="text" v-model="search"
+                                       placeholder="Search Name">
                                 <table class="table table-bordered">
                                     <thead>
                                     <tr>
@@ -39,12 +41,12 @@
                                         <th>Created on</th>
                                     </tr>
                                     </thead>
-                                    <tbody>
-                                    <tr v-for="enquiry in enquiries" type="1">
+                                    <tbody >
+                                    <tr v-for="enquiry in filteredEnquiries" type="1">
                                         <td>@{{ enquiry.name }}</td>
                                         <td>@{{ enquiry.email }}</td>
                                         <td>@{{ enquiry.subject }}</td>
-                                        <td style="maxlength= 100;">@{{ enquiry.message }}</td>
+                                        <td>@{{ enquiry.message.substring(0,500) }}</td>
                                         <td>@{{ enquiry.created_at }}</td>
                                     </tr>
                                     </tbody>

@@ -93,7 +93,7 @@ class CategoryController extends Controller
     {
         if(!empty($id)) {
             Category::where(['id' => $id])->delete();
-            return redirect()->back()->with('flash_message_success', 'Category Deleted Succefully!');
+            return redirect()->back()->with('flash_message_success', 'Category Deleted Successfully!');
         }
 
     }

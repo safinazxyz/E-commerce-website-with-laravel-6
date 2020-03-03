@@ -26,7 +26,6 @@ class CurrencyController extends Controller
 
         return view('admin.currencies.add_currency');
     }
-
     public function edit(Request $request, $id)
     {
         $currencyDetails = Currency::where('id', $id)->first();
@@ -37,14 +36,20 @@ class CurrencyController extends Controller
             } else {
                 $status = 1;
             }
-            Currency::where('id',$id)->update(['currency_code'=> $data['currency_code'],
+            Currency::where('id', $id)->update(['currency_code' => $data['currency_code'],
                 'exchange_rate' => $data['exchange_rate'],
                 'status' => $status]);
             return redirect()->back()->with('flash_message_success', 'Currency has been updated Successfully!');
         }
         return view('admin.currencies.edit_currency')->with(compact('currencyDetails'));
     }
-
+    public function delete($id = null)
+    {
+        if (!empty($id)) {
+            Currency::where('id',$id)->delete();
+            return redirect()->back()->with('flash_message_success', 'Currency Deleted Successfully!');
+        }
+    }
     public function view()
     {
         $currencies = Currency::get();

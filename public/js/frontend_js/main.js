@@ -43,7 +43,8 @@ $(document).ready(function () {
             data: {idSize: idSize},
             success: function (resp) {
                 var arr = resp.split('#');
-                $("#getPrice").html(arr[0]+" TL" );
+                var arr1 =arr[0].split('-');
+                $("#getPrice").html("TL "+arr1[0]+"<br><h2>USD "+arr1[1]+"<br>EUR "+arr1[2]+"<br>GBP "+arr1[3]+"<br></h2>" );
                 $('#price').val(arr[0]);
                 if (arr[1] == 0) {
                     $("#chartButton").hide();

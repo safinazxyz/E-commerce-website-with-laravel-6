@@ -156,6 +156,7 @@ Route::group(['middleware' => ['adminlogin']], function () {
     //Currency Route
     Route::match(['get', 'post'], '/admin/add-currency', 'CurrencyController@create');
     Route::match(['get', 'post'], '/admin/edit-currency/{id}', 'CurrencyController@edit');
+    Route::get('/admin/delete-currency/{id}', 'CurrencyController@delete');
     Route::get('/admin/view-currencies', 'CurrencyController@view');
 
 });

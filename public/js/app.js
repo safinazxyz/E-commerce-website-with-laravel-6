@@ -49339,6 +49339,7 @@ var app = new Vue({
   data: {
     testmsg: 'CONTACT US',
     responsemsg: '',
+    search: '',
     enquiries: []
   },
   ready: function ready() {
@@ -49349,7 +49350,18 @@ var app = new Vue({
 
     axios.get('/admin/get-enquiries').then(function (response) {
       _this.enquiries = response.data;
+    })["catch"](function (error) {
+      console.log(error);
     });
+  },
+  computed: {
+    filteredEnquiries: function filteredEnquiries() {
+      var _this2 = this;
+
+      return this.enquiries.filter(function (enquiry) {
+        return enquiry.name.toLowerCase().includes(_this2.search.toLowerCase());
+      });
+    }
   },
   methods: {
     addPost: function addPost() {
