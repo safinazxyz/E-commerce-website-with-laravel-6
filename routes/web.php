@@ -23,6 +23,9 @@ Route::get('/', 'IndexController@index');
 //Category Listing page
 Route::get('/products/{url}', 'ProductsController@products');
 
+//Products Filter Page by Color
+Route::march(['get', 'post'], '/products-filter', 'ProductsController@filter');
+
 //Product Detail Page
 Route::get('/product/{id}', 'ProductsController@product');
 

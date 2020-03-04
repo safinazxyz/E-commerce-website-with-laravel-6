@@ -117,6 +117,10 @@ class UsersController extends Controller
 
     public function login(Request $request)
     {
+        $session_id = Session::get('session_id');
+        if (!empty($session_id)) {
+            DB::table('carts')->where(['session_id' => $session_id])->delete();
+        }
         if ($request->isMethod('post')) {
             $data = $request->all();
             $userStatus = User::where('email', $data['email'])->first();

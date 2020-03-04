@@ -63,9 +63,10 @@
                                 <input type="hidden" name="price" id="price" value="{{ $productDetails->price }}">
 
                                 <div class="product-information"><!--/product-information-->
-                                    <img src="images/product-details/new.jpg" class="newarrival" alt=""/>
+                                    <img src="/images/frontend_images/product-details/new.jpg" class="newarrival" alt=""/>
                                     <h2>{{$productDetails->product_name}}</h2>
                                     <p>Code: {{$productDetails->product_code}}</p>
+                                    <p>Color: {{$productDetails->product_color}}</p>
                                     <p>
                                         <select id="selSize" name="size" style="width: 110px;" required>
                                             <option value="">
@@ -78,7 +79,7 @@
                                             @endforeach
                                         </select>
                                     </p>
-                                    <img src="images/product-details/rating.png" alt=""/>
+                                    <img src="/images/frontend_images/product-details/rating.png" alt=""/>
                                     <span>
                                         <?php $getCurrencyRates = Product::getCurrencyRates($productDetails->price); ?>
 									<span id="getPrice">{{ $productDetails->price }} TL
@@ -109,9 +110,11 @@
                                         <button type="button" onclick="return checkPincode();">Go</button>
                                         <span id="pincodeResponce"></span></p>
                                     <p><b>Brand:</b> E-SHOPPER</p>
-                                    <a href=""><img src="images/product-details/share.png"
-                                                    class="share img-responsive"
-                                                    alt=""/></a>
+
+{{--                                    <!-- Go to www.addthis.com/dashboard to customize your tools -->--}}
+{{--                                    <div class="addthis_inline_share_toolbox_jhw1"></div>--}}
+                                    <div style="float:left;margin-top: 10px;" class="sharethis-inline-share-buttons"></div>
+
                                 </div><!--/product-information-->
                             </form>
                         </div>

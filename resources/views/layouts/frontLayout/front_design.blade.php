@@ -29,6 +29,8 @@
           href="{{asset('images/frontend_images/ico/apple-touch-icon-72-precomposed.png') }}">
     <link rel="apple-touch-icon-precomposed"
           href="{{asset('images/frontend_images/ico/apple-touch-icon-57-precomposed.png') }}">
+    {{--sharethis.com share buttons--}}
+    <script type='text/javascript' src='https://platform-api.sharethis.com/js/sharethis.js#property=5e5fef9656d1e40012019fb4&product=inline-share-buttons&cms=sop' async='async'></script>
 </head><!--/head-->
 
 <body>
@@ -49,8 +51,16 @@
 <script src="{{asset('js/frontend_js/main.js') }}"></script>
 <script src="{{asset('js/frontend_js/jquery.validate.js') }}"></script>
 <script src="{{asset('js/frontend_js/passtrength.js') }}"></script>
-
+<script src="{{asset('js/frontend_js/popper.min.js') }}"></script>
 {{--<script src="{{asset('js/app.js') }}"></script>--}}
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+</script>
+
+{{--<!-- Go to www.addthis.com/dashboard to customize your tools -->--}}
+{{--<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5e5fe7caf2fd9d2c"></script>--}}
 </body>
 </html>
 <!--[if lt IE 9]>

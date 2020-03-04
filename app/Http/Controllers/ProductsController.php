@@ -441,8 +441,8 @@ class ProductsController extends Controller
         $data = $request->all();
         $proArr = explode("-", $data['idSize']);
         $proAttr = ProductsAttribute::where(['product_id' => $proArr[0], 'size' => $proArr[1]])->first();
-        $getCurrencyRates = Product::getCurrencyRates($proArr->price);
-        echo $proAttr->price."-".$getCurrencyRates['USD_Rate']."-".$getCurrencyRates['EUR_Rate']."-".$getCurrencyRates['GBP_Rate'];
+        $getCurrencyRates = Product::getCurrencyRates($proAttr->price);
+        echo $proAttr->price . "-" . $getCurrencyRates['USD_Rate'] . "-" . $getCurrencyRates['EUR_Rate'] . "-" . $getCurrencyRates['GBP_Rate'];
         echo "#";
         echo $proAttr->stock;
     }
@@ -838,14 +838,28 @@ class ProductsController extends Controller
         }
     }
 
+    public function filter(Request $request){
+        $data = $request->all();
+    }
+
     public function searchProducts(Request $request)
     {
         if ($request->isMethod('post')) {
             $data = $request->all();
             $categories = Category::with('categories')->where(['parent_id' => 0])->get();
             $search_product = $data['product'];
-            $productsAll = Product::where('product_name', 'like', '%' . $search_product . '%')->orwhere('product_code', $search_product)->where('status', 1)->get();
-            return view('products.listing')->with(compact('categories', 'search_product', 'productsAll'));
+            /* $productsAll = Product::where('product_name', 'like', '%' . $search_product . '%')->orwhere('product_code', $search_product)->where('status', 1)->paginate();*/
+            $productsAll = Product::where(function($query) use($search_product){
+                $query->where('product_name','like','%'.$search_product.'%')
+                    ->orWhere('product_code','like','%'.$search_product.'%')
+                    ->orWhere('product_color','like','%'.$search_product.'%')
+                    ->orWhere('description','like','%'.$search_product.'%')
+                    ->orWhere('care','like','%'.$search_product.'%')
+                ;
+            })->where('status',1)->paginate();
+
+
+            return view('products.listing')->with(compact('categories', 'productsAll', 'search_product'));
         }
     }
 

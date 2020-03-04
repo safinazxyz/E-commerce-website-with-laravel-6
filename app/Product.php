@@ -38,16 +38,13 @@ class Product extends Model
             if($currency->currency_code == "USD"){
                 $USD_Rate = round($price/$currency->exchange_rate,2);
             }
-            elseif($currency->currency_code == "GBP"){
-                $GBP_Rate = round($price/$currency->exchange_rate,2);
-            }
-            elseif($currency->currency_code == "EUR"){
+            else if($currency->currency_code == "EUR"){
                 $EUR_Rate = round($price/$currency->exchange_rate,2);
             }
+            else if($currency->currency_code == "GBP"){
+                $GBP_Rate = round($price/$currency->exchange_rate,2);
+            }
         }
-        $currenciesArr = array('USD_Rate'=>$USD_Rate,
-            'GBP_Rate'=>$GBP_Rate,
-            'EUR_Rate'=>$EUR_Rate);
-        return $currenciesArr;
+        return array('USD_Rate'=>$USD_Rate,'EUR_Rate'=>$EUR_Rate,'GBP_Rate'=>$GBP_Rate);
     }
 }

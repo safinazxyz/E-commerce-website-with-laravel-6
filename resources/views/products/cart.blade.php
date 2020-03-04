@@ -1,5 +1,6 @@
 @extends('layouts.frontLayout.front_design')
 @section('content')
+<?php use App\Product; ?>
     <section id="cart_items">
         <div class="container">
             <div class="breadcrumbs">
@@ -103,17 +104,33 @@
                 <div class="col-sm-6">
                     <div class="total_area">
 
-                        <a class="btn btn-default update" href="">Update</a> <ul>
+                        <a class="btn btn-default update" href="">Update</a>
+                        <ul>
                             @if(!empty(Session::get('CouponAmount')))
                                 <li>Sub Total <span><?php echo $total_amount; ?> TL</span></li>
                                 <li>Coupon Discount <span><?php echo Session::get('CouponAmount'); ?> TL</span></li>
+                                <?php
+                                $total_amount = $total_amount - Session::get('CouponAmount');
+                                $getCurrencyRates = Product::getCurrencyRates($total_amount);
+                                ?>
                                 <p style="vertical-align: middle;margin: 0; font-size: 24px;">-</p>
                                 <hr style="margin-top: 0;">
-                                <li>Grand Total <span><?php echo $total_amount-Session::get('CouponAmount'); ?> TL</span></li>
+                                <li>Grand Total
+                                    <span class="btn-secondary" data-toggle="tooltip" data-html="true"
+                                          title="USD {{ $getCurrencyRates['USD_Rate'] }}<br>
+                                           EUR {{ $getCurrencyRates['EUR_Rate'] }}<br>
+                                           GBP {{ $getCurrencyRates['GBP_Rate'] }}">
+                                     <?php echo $total_amount; ?> TL</span></li>
                             @else
+                                <?php $getCurrencyRates = Product::getCurrencyRates($total_amount); ?>
+
                                 <p style="vertical-align: middle;margin: 0; font-size: 24px;">-</p>
                                 <hr>
-                                <li>Grand Total <span><?php echo $total_amount; ?> TL</span></li>
+                                <li>Grand Total <span class="btn-secondary" data-toggle="tooltip" data-html="true"
+                                    title="USD {{ $getCurrencyRates['USD_Rate'] }}<br>
+                                           EUR {{ $getCurrencyRates['EUR_Rate'] }}<br>
+                                           GBP {{ $getCurrencyRates['GBP_Rate'] }}">
+                                     <?php echo $total_amount; ?> TL</span></li>
                             @endif
                         </ul>
                         <a class="btn btn-default check_out" href="{{ url('/checkout') }}">Check Out</a>

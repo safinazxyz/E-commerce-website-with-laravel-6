@@ -127,7 +127,9 @@
                                 </div>
                             </div>
                         @endforeach
-                        <div  style="align:center">{{ $productsAll->links() }}</div>
+                        @if(empty($searchproduct))
+                            <div style="align:center">{{ $productsAll->links() }}</div>
+                        @endif
                     </div><!--features_items-->
                 </div>
             </div>
