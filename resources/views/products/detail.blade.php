@@ -63,7 +63,10 @@
                                 <input type="hidden" name="price" id="price" value="{{ $productDetails->price }}">
 
                                 <div class="product-information"><!--/product-information-->
-                                    <img src="/images/frontend_images/product-details/new.jpg" class="newarrival" alt=""/>
+                                    <div align="left"><?php echo $breadcrumb; ?></div>
+                                    <div>&nbsp;</div>
+                                    <img src="/images/frontend_images/product-details/new.jpg" class="newarrival"
+                                         alt=""/>
                                     <h2>{{$productDetails->product_name}}</h2>
                                     <p>Code: {{$productDetails->product_code}}</p>
                                     <p>Color: {{$productDetails->product_color}}</p>
@@ -111,9 +114,10 @@
                                         <span id="pincodeResponce"></span></p>
                                     <p><b>Brand:</b> E-SHOPPER</p>
 
-{{--                                    <!-- Go to www.addthis.com/dashboard to customize your tools -->--}}
-{{--                                    <div class="addthis_inline_share_toolbox_jhw1"></div>--}}
-                                    <div style="float:left;margin-top: 10px;" class="sharethis-inline-share-buttons"></div>
+                                    {{--                                    <!-- Go to www.addthis.com/dashboard to customize your tools -->--}}
+                                    {{--                                    <div class="addthis_inline_share_toolbox_jhw1"></div>--}}
+                                    <div style="float:left;margin-top: 10px;"
+                                         class="sharethis-inline-share-buttons"></div>
 
                                 </div><!--/product-information-->
                             </form>

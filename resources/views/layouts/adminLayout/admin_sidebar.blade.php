@@ -54,6 +54,11 @@
                 <li <?php if(preg_match("/view-enquiries/i",$url)) { ?> class="active" <?php } ?>><a href="{{url('/admin/view-enquiries')}}">View Enquiries</a></li>
             </ul>
         </li>
+        <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Shipping</span> <span class="label label-important">1</span></a>
+            <ul <?php if(preg_match("/shipping/i",$url)) { ?> style="display: block;" <?php } ?>>
+                <li <?php if(preg_match("/view-shipping/i",$url)) { ?> class="active" <?php } ?>><a href="{{url('/admin/view-shipping')}}">Shipping Charges</a></li>
+            </ul>
+        </li>
         <?php /*
         //Removed unwanted tabs.
         <li> <a href="charts.html"><i class="icon icon-signal"></i> <span>Charts &amp; graphs</span></a> </li>

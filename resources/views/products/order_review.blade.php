@@ -145,8 +145,8 @@
                                     <td>{{$total_amount}} TL</td>
                                 </tr>
                                 <tr class="shipping-cost">
-                                    <td>Shipping Cost (+)</td>
-                                    <td>0 TL</td>
+                                    <td>Shipping Charges (+)</td>
+                                    <td>{{ $shippingCharges }} TL</td>
                                 </tr>
                                 <tr class="shipping-cost">
                                     <td>Discount Amount (-)</td>
@@ -160,7 +160,7 @@
                                 <tr>
                                     <td>Grand Total</td>
                                     <?php
-                                    $grand_total = $total_amount - Session::get('CouponAmount');
+                                    $grand_total = $total_amount + $shippingCharges  - Session::get('CouponAmount');
                                     $getCurrencyRates = Product::getCurrencyRates($total_amount);
                                     ?>
                                     <td>

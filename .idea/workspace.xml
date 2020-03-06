@@ -4,12 +4,11 @@
     <list default="true" id="5472f935-1950-4387-8698-cfaf51ac5c06" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProductsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProductsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UsersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UsersController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Product.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/adminLayout/admin_design.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/adminLayout/admin_design.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/frontLayout/front_design.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/frontLayout/front_design.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/products/add_product.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/products/add_product.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/products/edit_product.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/products/edit_product.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/adminLayout/admin_sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/adminLayout/admin_sidebar.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/frontLayout/front_sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/frontLayout/front_sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/products/cart.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/cart.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/products/detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/detail.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/products/listing.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/listing.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/products/order_review.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/order_review.blade.php" afterDir="false" />
@@ -207,7 +206,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/admin/currencies" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/admin/shipping" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -216,21 +215,21 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="settings.php.debug.servers" />
+    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php.composer" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\sultan\Desktop\sample2\resources\views\admin\shipping" />
+      <recent name="C:\Users\sultan\Desktop\sample2\resources\views\admin\currencies" />
+      <recent name="C:\Users\sultan\Desktop\sample2\resources\views\admin\enquiries" />
+      <recent name="C:\Users\sultan\Desktop\sample2\resources\views\pages" />
+      <recent name="C:\Users\sultan\Desktop\sample2\resources\views\emails" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\laravel\sample\resources\views\admin\users" />
       <recent name="C:\xampp\htdocs\laravel\sample\resources\views\orders" />
       <recent name="C:\xampp\htdocs\laravel\sample\resources\views\admin" />
       <recent name="C:\xampp\htdocs\laravel\sample\resources\views\products" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\sultan\Desktop\sample2\resources\views\admin\currencies" />
-      <recent name="C:\Users\sultan\Desktop\sample2\resources\views\admin\enquiries" />
-      <recent name="C:\Users\sultan\Desktop\sample2\resources\views\pages" />
-      <recent name="C:\Users\sultan\Desktop\sample2\resources\views\emails" />
-      <recent name="C:\Users\sultan\Desktop\sample-master" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -285,6 +284,9 @@
       <workItem from="1583243160752" duration="11640000" />
       <workItem from="1583269104877" duration="4234000" />
       <workItem from="1583333300120" duration="12864000" />
+      <workItem from="1583366426536" duration="550000" />
+      <workItem from="1583367007176" duration="5621000" />
+      <workItem from="1583413106248" duration="36656000" />
     </task>
     <servers />
   </component>
@@ -309,10 +311,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="263" y="18" key="#CLI_Interpreters/0.0.1366.728@0.0.1366.728" timestamp="1582493545500" />
-    <state x="137" y="18" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583268910042">
+    <state x="137" y="18" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583366977374">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="137" y="18" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1583268910042" />
+    <state x="137" y="18" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1583366977374" />
     <state x="441" y="166" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1582737040171">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -337,14 +339,14 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1582499953438" />
-    <state x="184" y="0" key="SettingsEditor" timestamp="1582494626059">
+    <state x="306" y="0" key="SettingsEditor" timestamp="1583366967184">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="184" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1582494626059" />
-    <state x="307" y="373" key="com.intellij.ide.util.TipDialog" timestamp="1583333726443">
+    <state x="306" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1583366967184" />
+    <state x="307" y="373" key="com.intellij.ide.util.TipDialog" timestamp="1583413111921">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="307" y="373" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1583333726443" />
+    <state x="307" y="373" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1583413111921" />
     <state x="111" y="0" width="1136" height="728" key="find.popup" timestamp="1582305615377">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

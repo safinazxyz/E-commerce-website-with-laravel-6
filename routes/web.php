@@ -14,35 +14,38 @@
 /*Route::get('/', function () {
     return view('welcome');
 });*/
+//view index
+Route::get('/', 'IndexController@index');
 
 Route::match(['get', 'post'], '/admin', 'AdminController@login');
 
-//view index
-Route::get('/', 'IndexController@index');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
 
 //Category Listing page
 Route::get('/products/{url}', 'ProductsController@products');
 
-//Products Filter Page by Color
-Route::march(['get', 'post'], '/products-filter', 'ProductsController@filter');
-
 //Product Detail Page
 Route::get('/product/{id}', 'ProductsController@product');
 
-//Get Product Attribute Price
-Route::any('/get-product-price', 'ProductsController@getProductPrice');
-
-//Add to Cart Route
-Route::match(['get', 'post'], '/add-cart', 'ProductsController@addtocart');
+//Products Filter Page by Color
+Route::match(['get', 'post'],'/products-filter', 'ProductsController@filter');
 
 //Cart Route Page Blade
 Route::match(['get', 'post'], '/cart', 'ProductsController@cart');
+
+//Add to Cart Route
+Route::match(['get', 'post'], '/add-cart', 'ProductsController@addtocart');
 
 //Product Cart Delete Items
 Route::get('/cart/delete-product/{id}', 'ProductsController@deleteCartProduct');
 
 //Update Product Cart Items Quantity
 Route::get('/cart/update-quantity/{id}/{quantity}', 'ProductsController@updateCartQuantity');
+
+//Get Product Attribute Price
+Route::any('/get-product-price', 'ProductsController@getProductPrice');
 
 //Apply Coupon
 Route::post('/cart/apply-coupon', 'ProductsController@applyCoupon');
@@ -71,6 +74,9 @@ Route::post('/search-products', 'ProductsController@searchProducts');
 //Check if User already exist
 Route::match(['get', 'post'], '/check-email', 'UsersController@checkEmail');
 
+//Check Pincode
+Route::post('/check-pincode', 'ProductsController@checkPincode');
+
 //All Routes after Login
 Route::group(['middleware' => ['frontlogin']], function () {
     //User Account  Page
@@ -94,9 +100,6 @@ Route::group(['middleware' => ['frontlogin']], function () {
     //Users Ordered Products Detail Page
     Route::get('/orders/{id}', 'ProductsController@userOrderDetails');
 });
-
-//Check Pincode
-Route::post('/check-pincode', 'ProductsController@checkPincode');
 
 Route::group(['middleware' => ['adminlogin']], function () {
     Route::get('/admin/dashboard', 'AdminController@dashboard');
@@ -162,6 +165,10 @@ Route::group(['middleware' => ['adminlogin']], function () {
     Route::get('/admin/delete-currency/{id}', 'CurrencyController@delete');
     Route::get('/admin/view-currencies', 'CurrencyController@view');
 
+    //Shipping Charges
+    Route::match(['get', 'post'], '/admin/edit-shipping/{id}', 'ShippingController@editShipping');
+    Route::get('/admin/view-shipping', 'ShippingController@viewShipping');
+
 });
 
 Route::get('/logout', 'AdminController@logout');
@@ -175,7 +182,6 @@ Route::match(['get', 'post'], '/page/contact', 'CmsController@contact');
 
 // Display Post Page (for Vue.js)
 Route::match(['get', 'post'], '/page/post', 'CmsController@addPost');
-
 
 //Route for Display Front-End CMS Pages
 Route::match(['get', 'post'], '/page/{url}', 'CmsController@cmsPage');
