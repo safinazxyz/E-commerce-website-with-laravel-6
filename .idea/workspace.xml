@@ -3,16 +3,20 @@
   <component name="ChangeListManager">
     <list default="true" id="5472f935-1950-4387-8698-cfaf51ac5c06" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProductsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProductsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ShippingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ShippingController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UsersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UsersController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Product.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/backend_js/matrix.form_validation.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/backend_js/matrix.form_validation.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/products/add_product.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/products/add_product.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/products/edit_product.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/products/edit_product.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/shipping/edit_shipping.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/shipping/edit_shipping.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/shipping/view_shipping.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/shipping/view_shipping.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/adminLayout/admin_sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/adminLayout/admin_sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/frontLayout/front_sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/frontLayout/front_sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/products/detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/detail.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/products/listing.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/listing.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/products/order_review.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/order_review.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sample.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -206,7 +210,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/admin/shipping" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/admin/admins" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -218,18 +222,18 @@
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php.composer" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\sultan\Desktop\sample2\resources\views\admin\shipping" />
-      <recent name="C:\Users\sultan\Desktop\sample2\resources\views\admin\currencies" />
-      <recent name="C:\Users\sultan\Desktop\sample2\resources\views\admin\enquiries" />
-      <recent name="C:\Users\sultan\Desktop\sample2\resources\views\pages" />
-      <recent name="C:\Users\sultan\Desktop\sample2\resources\views\emails" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\laravel\sample\resources\views\admin\users" />
       <recent name="C:\xampp\htdocs\laravel\sample\resources\views\orders" />
       <recent name="C:\xampp\htdocs\laravel\sample\resources\views\admin" />
       <recent name="C:\xampp\htdocs\laravel\sample\resources\views\products" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\sultan\Desktop\sample2\resources\views\admin\admins" />
+      <recent name="C:\Users\sultan\Desktop\sample2\resources\views\admin\shipping" />
+      <recent name="C:\Users\sultan\Desktop\sample2\resources\views\admin\currencies" />
+      <recent name="C:\Users\sultan\Desktop\sample2\resources\views\admin\enquiries" />
+      <recent name="C:\Users\sultan\Desktop\sample2\resources\views\pages" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -287,6 +291,7 @@
       <workItem from="1583366426536" duration="550000" />
       <workItem from="1583367007176" duration="5621000" />
       <workItem from="1583413106248" duration="36656000" />
+      <workItem from="1583509022390" duration="14976000" />
     </task>
     <servers />
   </component>
@@ -343,18 +348,18 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="306" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1583366967184" />
-    <state x="307" y="373" key="com.intellij.ide.util.TipDialog" timestamp="1583413111921">
+    <state x="307" y="373" key="com.intellij.ide.util.TipDialog" timestamp="1583509040233">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="307" y="373" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1583413111921" />
+    <state x="307" y="373" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1583509040233" />
     <state x="111" y="0" width="1136" height="728" key="find.popup" timestamp="1582305615377">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="111" y="0" width="1136" height="728" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1582305615377" />
-    <state x="772" y="166" width="672" height="677" key="run.anything.popup" timestamp="1581968012477">
+    <state x="482" y="30" width="672" height="677" key="run.anything.popup" timestamp="1583540970532">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="772" y="166" width="672" height="677" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1581968012477" />
+    <state x="482" y="30" width="672" height="677" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1583540970532" />
     <state x="669" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1581894953065">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

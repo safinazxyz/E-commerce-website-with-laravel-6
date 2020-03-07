@@ -52,12 +52,6 @@
                                     </div>
                                 </div>
                                 <div class="control-group">
-                                    <label class="control-label">Product Color</label>
-                                    <div class="controls">
-                                        <input type="text" name="product_color" id="product_color">
-                                    </div>
-                                </div>
-                                <div class="control-group">
                                     <label class="control-label">Description</label>
                                     <div class="controls">
                                         <textarea name="description" id="description"></textarea>
@@ -95,6 +89,12 @@
                                     <label class="control-label">Price</label>
                                     <div class="controls">
                                         <input type="text" name="price" id="price">
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Weight (g)</label>
+                                    <div class="controls">
+                                        <input type="text" name="weight" id="weight">
                                     </div>
                                 </div>
                                 <div class="control-group">

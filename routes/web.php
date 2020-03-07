@@ -30,7 +30,7 @@ Route::get('/products/{url}', 'ProductsController@products');
 Route::get('/product/{id}', 'ProductsController@product');
 
 //Products Filter Page by Color
-Route::match(['get', 'post'],'/products-filter', 'ProductsController@filter');
+Route::match(['get', 'post'], '/products-filter', 'ProductsController@filter');
 
 //Cart Route Page Blade
 Route::match(['get', 'post'], '/cart', 'ProductsController@cart');
@@ -147,6 +147,10 @@ Route::group(['middleware' => ['adminlogin']], function () {
     //Admin Users Route
     Route::get('/admin/view-users', 'UsersController@viewUsers');
 
+    //Admin/Sub-Admins View & Add Route
+    Route::get('/admin/view-admins', 'AdminController@viewAdmins');
+    Route::match(['get', 'post'], '/admin/add-admin', 'AdminController@addAdmin');
+    Route::match(['get', 'post'], '/admin/edit-admin/{id}', 'AdminController@editAdmin');
     //Admin CMS PAGES
     Route::match(['get', 'post'], '/admin/add-cms-page', 'CmsController@create');
     Route::match(['get', 'post'], '/admin/edit-cms-page/{id}', 'CmsController@edit');

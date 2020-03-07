@@ -32,7 +32,10 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Country</th>
-                                    <th>Shipping Charges</th>
+                                    <th>0g to 500g</th>
+                                    <th>501g to 1000g</th>
+                                    <th>1001g to 2000g</th>
+                                    <th>2001g to 5000g</th>
                                     <th>Updated at</th>
                                     <th>Actions</th>
                                 </tr>
@@ -42,7 +45,10 @@
                                 <tr class="gradeX">
                                     <td>{{ $shipping->id }}</td>
                                     <td>{{ $shipping->country }}</td>
-                                    <td>{{ $shipping->shipping_charges }}</td>
+                                    <td>{{ $shipping->shipping_charges0_500g }}</td>
+                                    <td>{{ $shipping->shipping_charges501_1000g }}</td>
+                                    <td>{{ $shipping->shipping_charges1001_2000g }}</td>
+                                    <td>{{ $shipping->shipping_charges2001_5000g }}</td>
                                     <td>{{ $shipping->updated_at }}</td>
                                     <td class="center"><a href="{{ url('/admin/edit-shipping/'.$shipping->id) }}" class="btn btn-primary btn-mini">Edit</a>
                                         <a rel="{{ $shipping->id }}" rel1="delete-shipping" <?php /* href="{{ url('/admin/delete-category/'.$pro->id) }}" */?>

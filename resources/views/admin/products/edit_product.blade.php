@@ -101,6 +101,12 @@
                                     </div>
                                 </div>
                                 <div class="control-group">
+                                    <label class="control-label">Weight (g)</label>
+                                    <div class="controls">
+                                        <input type="text" name="weight" id="weight" value="{{ $productDetails->weight }}">
+                                    </div>
+                                </div>
+                                <div class="control-group">
                                     <label class="control-label">Image</label>
                                     <div class="controls">
                                         <input type="file" name="image" id="image">

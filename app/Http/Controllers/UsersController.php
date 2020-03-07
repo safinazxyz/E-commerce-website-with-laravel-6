@@ -55,6 +55,9 @@ class UsersController extends Controller
                 if (empty($data['mobile'])) {
                     $user->mobile = "";
                 }
+                date_default_timezone_set('Europe/Istanbul');
+                $user->created_at = date("Y-m-d H:i:s");
+                $user->updated_at = date("Y-m-d H:i:s");
                 $user->save();
 
                 /* //Save Register Email

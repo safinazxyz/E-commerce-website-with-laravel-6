@@ -5,6 +5,18 @@
             <div id="breadcrumb"> <a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="#">Shipping</a>
             <h1>Shipping Charges</h1>
         </div>
+            @if(Session::has('flash_message_error'))
+                <div class="alert alert-error alert-block">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    <strong>{!! session('flash_message_error') !!}</strong>
+                </div>
+            @endif
+            @if(Session::has('flash_message_success'))
+                <div class="alert alert-success alert-block">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    <strong>{!! session('flash_message_success') !!}</strong>
+                </div>
+            @endif
         <div class="container-fluid"><hr>
             <div class="row-fluid">
                 <div class="span12">
@@ -22,9 +34,27 @@
                                     </div>
                                 </div>
                                 <div class="control-group">
-                                    <label class="control-label">Shipping Charges</label>
+                                    <label class="control-label">Shipping Charges (0-500g)</label>
                                     <div class="controls">
-                                        <textarea name="shipping_charges" id="shipping_charges">{{ $shippingDetails->shipping_charges }}</textarea>
+                                        <textarea name="shipping_charges0_500g" id="shipping_charges0_500g">{{ $shippingDetails->shipping_charges0_500g }}</textarea>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Shipping Charges (501-1000g)</label>
+                                    <div class="controls">
+                                        <textarea name="shipping_charges501_1000g" id="shipping_charges501_1000g">{{ $shippingDetails->shipping_charges501_1000g }}</textarea>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Shipping Charges (1001-2000g)</label>
+                                    <div class="controls">
+                                        <textarea name="shipping_charges1001_2000g" id="shipping_charges1001_2000g">{{ $shippingDetails->shipping_charges1001_2000g }}</textarea>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Shipping Charges (2001-5000g)</label>
+                                    <div class="controls">
+                                        <textarea name="shipping_charges2001_5000g" id="shipping_charges2001_5000g">{{ $shippingDetails->shipping_charges2001_5000g }}</textarea>
                                     </div>
                                 </div>
                                 <div class="form-actions">
