@@ -114,6 +114,13 @@
                             href="{{url('/admin/view-shipping')}}">Shipping Charges</a></li>
                 </ul>
             </li>
+            <li class="submenu"><a href="#"><i class="icon icon-th-list"></i> <span>Newsletter Subscribers</span> <span
+                        class="label label-important">1</span></a>
+                <ul <?php if(preg_match("/newsletter-subscribers/i", $url)) { ?> style="display: block;" <?php } ?>>
+                    <li <?php if(preg_match("/view-newsletter-subscribers/i", $url)) { ?> class="active" <?php } ?>><a
+                            href="{{url('/admin/view-newsletter-subscribers')}}">View Subscribers</a></li>
+                </ul>
+            </li>
         @endif
         <?php /*
         //Removed unwanted tabs.

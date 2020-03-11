@@ -453,9 +453,6 @@ class ProductsController extends Controller
 
     public function products($url)
     {
-        if(Session::get('adminDetails')['products_access']==0){
-            return redirect('/admin/dashboard')->with('flash_message_error','You have no access for this module');
-        }
         //Show 404 page if Category URL does not exist
         $countCategory = Category::where(['url' => $url, 'status' => 1])->count();
         if ($countCategory == 0) {
@@ -875,6 +872,11 @@ class ProductsController extends Controller
             //Shipping Charges
            /* $shippingCharges = Product::getShippingCharges($shippingDetails->country);*/
 
+            $data['grand_total'] = 0;
+            /*//Product Model de function oluşturarak toplam hesabı hesaplıyoruz. Böylece güvenliği arttırmış muloruz hacklenmeye karşı.
+            $data['grand_total'] = 0; bu etkilemiyor böylece*/
+            $grand_total = Product::getGrandTotal();
+
             $order = new Order;
             $order->user_id = $user_id;
             $order->user_email = $user_email;
@@ -890,7 +892,7 @@ class ProductsController extends Controller
             $order->order_status = "New";
             $order->payment_method = $data['payment_method'];
             $order->shipping_charges = Session::get('ShippingCharges');
-            $order->grand_total = $data['grand_total'];
+            $order->grand_total = $grand_total;
             $order->save();
 
             $order_id = DB::getPdo()->lastInsertId();
@@ -903,7 +905,8 @@ class ProductsController extends Controller
                 $cartPro->product_code = $pro->product_code;
                 $cartPro->product_name = $pro->product_name;
                 $cartPro->product_size = $pro->size;
-                $cartPro->product_price = $pro->price;
+                $product_price = Product::getProductPrice($pro->product_id, $pro->size);
+                $cartPro->product_price = $product_price;
                 $cartPro->product_color = $pro->product_color;
                 $cartPro->product_qty = $pro->quantity;
                 $cartPro->save();
@@ -920,7 +923,8 @@ class ProductsController extends Controller
                 //Reduce Stock Script Ends
             }
             Session::put('order_id', $order_id);
-            Session::put('grand_total', $data['grand_total']);
+            Session::put('grand_total', $grand_total);
+
             if ($data['payment_method'] == "COD") {
                 $productDetails = Order::with('orders')->where('id', $order_id)->first();
                 $userDetails = User::where('id', $user_id)->first();

@@ -77,6 +77,11 @@ Route::match(['get', 'post'], '/check-email', 'UsersController@checkEmail');
 //Check Pincode
 Route::post('/check-pincode', 'ProductsController@checkPincode');
 
+//Check Subscriber Email
+Route::post('/check-subscriber-email', 'NewsletterController@checkSubscriber');
+//Check Subscriber Email
+Route::post('/add-subscriber-email', 'NewsletterController@addSubscriber');
+
 //All Routes after Login
 Route::group(['middleware' => ['frontlogin']], function () {
     //User Account  Page
@@ -174,6 +179,13 @@ Route::group(['middleware' => ['adminlogin']], function () {
     Route::match(['get', 'post'], '/admin/edit-shipping/{id}', 'ShippingController@editShipping');
     Route::get('/admin/view-shipping', 'ShippingController@viewShipping');
 
+    //Newsletter Subscriber
+    Route::get('admin/view-newsletter-subscribers', 'NewsletterController@viewNewsletterSubscribers');
+    Route::get('admin/delete-newsletter-subscriber/{id}', 'NewsletterController@deleteNewsletterSubscriber');
+    Route::get('admin/update-newsletter-status/{id}/{status}', 'NewsletterController@updateNewsletterSubscribers');
+
+    //Export Newsletter Emails
+    Route::get('/admin/export-newsletter-emails','NewsletterController@exportNewsletterEmails');;
 });
 
 Route::get('/logout', 'AdminController@logout');
