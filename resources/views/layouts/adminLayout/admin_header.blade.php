@@ -33,6 +33,7 @@
             </ul>
         </li>
  */?>
+    <li class=""><a title="" href="javascript:void(0)"> <span class="text">Welcome {{ Str::upper(Session::get('adminDetails')['username']) }} ({{ Session::get('adminDetails')['type'] }})</span></a></li>
         <li class=""><a title="" href="{{url('/admin/settings')}}"><i class="icon icon-cog"></i> <span class="text">Settings</span></a></li>
         <li class=""><a title="" href="{{url('/logout')}}"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
     </ul>

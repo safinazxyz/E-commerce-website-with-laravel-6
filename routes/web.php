@@ -151,6 +151,7 @@ Route::group(['middleware' => ['adminlogin']], function () {
     Route::get('/admin/view-admins', 'AdminController@viewAdmins');
     Route::match(['get', 'post'], '/admin/add-admin', 'AdminController@addAdmin');
     Route::match(['get', 'post'], '/admin/edit-admin/{id}', 'AdminController@editAdmin');
+
     //Admin CMS PAGES
     Route::match(['get', 'post'], '/admin/add-cms-page', 'CmsController@create');
     Route::match(['get', 'post'], '/admin/edit-cms-page/{id}', 'CmsController@edit');

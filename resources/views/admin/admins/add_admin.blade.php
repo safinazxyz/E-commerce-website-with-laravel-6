@@ -54,7 +54,9 @@
                                 <div class="control-group" id="access">
                                     <label class="control-label">Access</label>
                                     <div class="controls">
-                                        <input type="checkbox" name="categories_access" id="categories_access" value="1" >&nbsp;Categories<br>
+                                        <input type="checkbox" name="categories_view_access" id="categories_view_access" value="1" >&nbsp;View only Categories<br>
+                                        <input type="checkbox" name="categories_edit_access" id="categories_edit_access" value="1" >&nbsp;View & Edit Categories<br>
+                                        <input type="checkbox" name="categories_full_access" id="categories_full_access" value="1" >&nbsp;Full Categories<br>
                                         <input type="checkbox" name="products_access" id="products_access" value="1" >&nbsp;Products<br>
                                         <input type="checkbox" name="orders_access" id="orders_access" value="1" >&nbsp;Orders<br>
                                         <input type="checkbox" name="users_access" id="users_access" value="1">&nbsp;Users<br>
