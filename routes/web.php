@@ -147,6 +147,8 @@ Route::group(['middleware' => ['adminlogin']], function () {
     Route::get('/admin/view-orders-detail/{id}', 'ProductsController@viewOrdersDetail');
     //Order Invoice
     Route::get('admin/view-order-invoice/{id}', 'ProductsController@viewOrderInvoice');
+    //Order PDF Invoice
+    Route::get('admin/view-pdf-invoice/{id}', 'ProductsController@viewPDFInvoice');
     //Update Order Status
     Route::post('/admin/update-order-status', 'ProductsController@updateOrderStatus');
     //Admin Users Route
@@ -184,8 +186,10 @@ Route::group(['middleware' => ['adminlogin']], function () {
     Route::get('admin/delete-newsletter-subscriber/{id}', 'NewsletterController@deleteNewsletterSubscriber');
     Route::get('admin/update-newsletter-status/{id}/{status}', 'NewsletterController@updateNewsletterSubscribers');
 
-    //Export Newsletter Emails
-    Route::get('/admin/export-newsletter-emails','NewsletterController@exportNewsletterEmails');;
+    //Exports
+    Route::get('/admin/export-newsletter-emails','NewsletterController@exportNewsletterEmails');
+    Route::get('/admin/export-users','UsersController@exportUsers');
+    Route::get('/admin/export-products','ProductsController@exportProducts');
 });
 
 Route::get('/logout', 'AdminController@logout');

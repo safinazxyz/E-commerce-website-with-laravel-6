@@ -50,7 +50,7 @@
                                         <td>{{ $category->description }}</td>
                                         <td>{{ $category->url }}</td>
                                         <td class="center">
-                                            @if(Session::get('adminDetails')['categories_edit_access']==1)
+                                            @if(Session::get('adminDetails')['categories_edit_access']==1 || Session::get('adminDetails')['categories_full_access']==1)
                                                 <a href="{{ url('/admin/edit-category/'.$category->id) }}"
                                                    class="btn btn-primary btn-mini">Edit</a>
                                             @endif

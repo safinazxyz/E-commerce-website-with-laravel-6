@@ -19,6 +19,9 @@
                 <strong>{!! session('flash_message_success') !!}</strong>
             </div>
         @endif
+        <div style="margin-left: 20px;">
+            <a href="{{ url('/admin/export-users') }}" class="btn btn-primary btn-mini">Export</a>
+        </div>
         <div class="container-fluid">
             <hr>
             <div class="row-fluid">

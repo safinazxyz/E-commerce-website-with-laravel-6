@@ -13,6 +13,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use DB;
 use Illuminate\Support\Str;
+use App\Exports\usersExport;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Arr;
 use function foo\func;
 
@@ -274,5 +276,8 @@ class UsersController extends Controller
         return view('admin.users.view_users')->with(compact('users'));
     }
 
+    public function exportUsers(){
+        return Excel::download(new usersExport,'users.xlsx');
+    }
 
 }

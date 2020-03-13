@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\NewsletterSubscriber;
+use App\Exports\subscribersExport;
 use Maatwebsite\Excel\Facades\Excel;
 
 class NewsletterController extends Controller
@@ -55,7 +56,7 @@ class NewsletterController extends Controller
         return redirect()->back()->with('flash_message_success', 'Newsletter Status has been deleted!');
     }
 
-    public function exportNewsletterEmails()
+    /*public function exportNewsletterEmails()
     {
         $subscribersData = NewsletterSubscriber::select('id', 'email', 'created_at')
             ->where('status', 1)
@@ -67,5 +68,8 @@ class NewsletterController extends Controller
             });
         })->download('xlsx');
 
+    }*/
+    public function exportNewsletterEmails(){
+        return Excel::download(new subscribersExport,'subscribers.xlsx');
     }
 }

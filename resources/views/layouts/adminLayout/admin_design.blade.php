@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{{ asset ('css/backend_css/sweetalert.css') }}" />
     <link href="{{ asset('fonts/backend_fonts/css/font-awesome.css') }}" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('css/backend_css/jquery.gritter.css') }}" />
+    <link rel="stylesheet" href="{{ asset ('css/backend_css/bootstrap-wysihtml5.css') }}" />
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="{{ asset('css/backend_css/jquery-ui.css') }}" />
 </head>
@@ -39,8 +40,16 @@
 <script src="{{asset('js/backend_js/matrix.form_validation.js') }}"></script>
 <script src="{{asset('js/backend_js/matrix.tables.js') }}"></script>
 <script src="{{asset('js/backend_js/matrix.popover.js') }}"></script>
+<script src="{{asset('js/backend_js/wysihtml5-0.3.0.js') }}"></script>
+<script src="{{asset('js/backend_js/bootstrap-wysihtml5.js') }}"></script>
 <script src="{{asset('js/backend_js/jquery-ui.js') }}"></script>
+
 {{--<script src="{{asset('js/app.js') }}"></script>--}}
+<script>
+    $('.textarea_description').wysihtml5();
+    $('.textarea_care').wysihtml5();
+    $('.textarea_category_description').wysihtml5();
+</script>
 <script>
     $( function() {
         $( "#expiry_date" ).datepicker({

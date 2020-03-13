@@ -55,7 +55,7 @@ class CategoryController extends Controller
 
     public function edit(Request $request, $id = null)
     {
-        if (Session::get('adminDetails')['categories_edit_access'] == 0) {
+        if (Session::get('adminDetails')['categories_view_access'] == 0) {
             return redirect('/admin/dashboard')->with('flash_message_error', 'You have no access for this module');
         }
         if ($request->isMethod('post')) {

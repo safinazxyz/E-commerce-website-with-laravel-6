@@ -60,9 +60,18 @@
 
 
                                         <td>
-                                            <a href="{{ url('/admin/view-orders-detail/'.$order->id) }}" class="btn btn-success btn-mini">View Details</a>
-                                            <br><br>
-                                            <a href="{{ url('/admin/view-order-invoice/'.$order->id) }}" class="btn btn-success btn-mini">View Invoice</a>
+                                            <a href="{{ url('/admin/view-orders-detail/'.$order->id) }}"
+                                               class="btn btn-success btn-mini">View Details</a>
+                                            @if($order->order_status == "Shipped" ||
+                                                 $order->order_status == "Delivered" ||
+                                                  $order->order_status == "Paid"  )
+                                                <br><br>
+                                                <a href="{{ url('/admin/view-order-invoice/'.$order->id) }}"
+                                                   class="btn btn-warning btn-mini">View Invoice</a>
+                                                <br><br>
+                                                <a href="{{ url('/admin/view-pdf-invoice/'.$order->id) }}"
+                                                   class="btn btn-primary btn-mini">View PDF Invoice</a>
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach

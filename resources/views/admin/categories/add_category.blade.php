@@ -39,7 +39,8 @@
                                 <div class="control-group">
                                     <label class="control-label">Description</label>
                                     <div class="controls">
-                                        <textarea name="description" id="description"></textarea>
+                                        <textarea name="description" id="description"
+                                                  class="textarea_category_description span10"></textarea>
                                     </div>
                                 </div>
                                 <div class="control-group">
@@ -66,12 +67,12 @@
                                         <input type="text" name="meta_keywords" id="meta_keywords">
                                     </div>
                                 </div>
-                            <div class="control-group">
-                                <label class="control-label">Enable</label>
-                                <div class="controls">
-                                    <input type="checkbox" name="status" id="status" value="1">
+                                <div class="control-group">
+                                    <label class="control-label">Enable</label>
+                                    <div class="controls">
+                                        <input type="checkbox" name="status" id="status" value="1">
+                                    </div>
                                 </div>
-                            </div>
                                 <div class="form-actions">
                                     <input type="submit" value="Add Category" class="btn btn-success">
                                 </div>
