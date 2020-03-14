@@ -85,22 +85,29 @@
                                     <img src="/images/frontend_images/product-details/rating.png" alt=""/>
                                     <span>
                                         <?php $getCurrencyRates = Product::getCurrencyRates($productDetails->price); ?>
-									<span id="getPrice">{{ $productDetails->price }} TL
+								    	<span id="getPrice">{{ $productDetails->price }}
                                             <h2>
                                                 USD {{ $getCurrencyRates['USD_Rate'] }}<br>
                                                 EUR {{ $getCurrencyRates['EUR_Rate'] }}<br>
                                                 GBP {{ $getCurrencyRates['GBP_Rate'] }}<br>
                                             </h2>
-                                    </span>
-                                    <label>Quantity:</label>
-                                    <input type="text" name="quantity" value="1"/>
-                                    @if($total_stock>0)
-                                            <button type="submit" class="btn btn-fefault cart" id="chartButton">
-                                            <i class="fa fa-shopping-cart"></i>
-                                            Add to cart
-                                        </button>
+                                      </span>
+                                      <label>Quantity:</label>
+                                      <input type="text" name="quantity" value="1"/>
+                                      @if($total_stock>0)
+                                            <button type="submit" class="btn btn-fefault cart" id="chartButton"
+                                                    name="chartButton" value="Shopping Cart">
+                                               <i class="fa fa-shopping-cart"></i>
+                                                Add to cart
+                                            </button>
                                         @endif
-                                        </span>
+
+                                    </span>
+                                    <button type="submit" class="btn btn-fefault cart" id="wishListButton"
+                                            name="wishListButton" value="Wish List" style="margin:0; background-color: #f8d980">
+                                        <i class="fa fa-star"></i>
+                                        Add to Wish List
+                                    </button>
                                     <p><b>Availability:</b> <span id="Availability">@if($total_stock>0) In
                                             Stock @else
                                                 Out

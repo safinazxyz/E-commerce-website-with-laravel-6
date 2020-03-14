@@ -18,6 +18,7 @@
     <link href="{{ asset ('css/frontend_css/easyzoom.css') }}" rel="stylesheet">
     <link href="{{ asset ('css/frontend_css/responsive.css') }}" rel="stylesheet">
     <link href="{{ asset ('css/frontend_css/passtrength.css') }}" rel="stylesheet">
+    <link href="{{ asset ('css/frontend_css/sweetalert.css') }}" rel="stylesheet">
 
     <![endif]-->
     <link rel="shortcut icon" href="{{asset('images/frontend_images/ico/favicon.ico') }}">
@@ -52,6 +53,7 @@
 <script src="{{asset('js/frontend_js/jquery.validate.js') }}"></script>
 <script src="{{asset('js/frontend_js/passtrength.js') }}"></script>
 <script src="{{asset('js/frontend_js/popper.min.js') }}"></script>
+<script src="{{asset('js/frontend_js/sweetalert.min.js') }}"></script>
 {{--<script src="{{asset('js/app.js') }}"></script>--}}
 <script>
     $(function () {

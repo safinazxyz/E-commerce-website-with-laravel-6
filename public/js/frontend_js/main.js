@@ -295,3 +295,20 @@ function  checkPincode() {
         }
     });
 }
+//SweetAlert Jquery for Delete
+$('.deleteRecord').on('click',function(e){
+    var id = $(this).attr('rel');
+    var deleteFunction = $(this).attr('rel1');
+    swal({
+            title: "Are you sure?",
+            text: "Your will not be able to recover this Record Again!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonClass: "btn-danger",
+            confirmButtonText: "Yes, delete it!",
+            closeOnConfirm: false
+        },
+        function(){
+            window.location.href="/"+deleteFunction+"/"+id;
+        });
+});

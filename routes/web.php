@@ -104,6 +104,9 @@ Route::group(['middleware' => ['frontlogin']], function () {
     Route::get('/user-orders', 'ProductsController@userOrders');
     //Users Ordered Products Detail Page
     Route::get('/orders/{id}', 'ProductsController@userOrderDetails');
+    //Wish List Page
+    Route::match(['get', 'post'], '/wish-list', 'ProductsController@wishList');
+    Route::match(['get', 'post'], '/wish-list/delete-product/{id}', 'ProductsController@wishListDelete');
 });
 
 Route::group(['middleware' => ['adminlogin']], function () {
@@ -187,9 +190,9 @@ Route::group(['middleware' => ['adminlogin']], function () {
     Route::get('admin/update-newsletter-status/{id}/{status}', 'NewsletterController@updateNewsletterSubscribers');
 
     //Exports
-    Route::get('/admin/export-newsletter-emails','NewsletterController@exportNewsletterEmails');
-    Route::get('/admin/export-users','UsersController@exportUsers');
-    Route::get('/admin/export-products','ProductsController@exportProducts');
+    Route::get('/admin/export-newsletter-emails', 'NewsletterController@exportNewsletterEmails');
+    Route::get('/admin/export-users', 'UsersController@exportUsers');
+    Route::get('/admin/export-products', 'ProductsController@exportProducts');
 });
 
 Route::get('/logout', 'AdminController@logout');
