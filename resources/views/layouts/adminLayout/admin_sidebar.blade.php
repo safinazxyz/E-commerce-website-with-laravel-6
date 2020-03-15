@@ -36,21 +36,28 @@
                 </ul>
         @endif
         @if(Session::get('adminDetails')['orders_access']==1)
+            <?php $base_order_url = trim(basename($url)); ?>
             <li class="submenu"><a href="#"><i class="icon icon-th-list"></i> <span>Orders</span> <span
-                        class="label label-important">1</span></a>
+                        class="label label-important">2</span></a>
                 <ul <?php if(preg_match("/order/i", $url)) { ?> style="display: block;" <?php } ?>>
-                    <li <?php if(preg_match("/view-orders/i", $url)) { ?> class="active" <?php } ?>><a
+                    <li <?php if( $base_order_url =="view-orders") { ?> class="active" <?php } ?>><a
                             href="{{url('/admin/view-orders')}}">View Orders</a></li>
+                    <li <?php if( $base_order_url == "view-orders-charts") { ?> class="active" <?php } ?>><a
+                            href="{{url('/admin/view-orders-charts')}}">View Orders Charts</a></li>
                 </ul>
             </li>
         @endif
-
         @if(Session::get('adminDetails')['users_access']==1)
+            <?php $base_user_url = trim(basename($url)); ?>
             <li class="submenu"><a href="#"><i class="icon icon-th-list"></i> <span>Users</span> <span
-                        class="label label-important">1</span></a>
+                        class="label label-important">3</span></a>
                 <ul <?php if(preg_match("/user/i", $url)) { ?> style="display: block;" <?php } ?>>
-                    <li <?php if(preg_match("/view-users/i", $url)) { ?> class="active" <?php } ?>><a
+                    <li <?php if( $base_user_url == "view-users") { ?> class="active" <?php } ?>><a
                             href="{{url('/admin/view-users')}}">View Users</a></li>
+                    <li <?php if( $base_user_url == "view-users-charts") { ?> class="active" <?php } ?>><a
+                            href="{{url('/admin/view-users-charts')}}">View Users Charts</a></li>
+                    <li <?php if( $base_user_url == "view-users-countries-charts") { ?> class="active" <?php } ?>><a
+                            href="{{url('/admin/view-users-countries-charts')}}">View Users Countries Charts</a></li>
                 </ul>
             </li>
         @endif

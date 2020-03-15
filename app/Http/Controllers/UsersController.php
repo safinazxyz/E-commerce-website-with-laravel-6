@@ -6,6 +6,7 @@ use App\Cart;
 use App\Country;
 use App\Product;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Session;
@@ -16,13 +17,14 @@ use Illuminate\Support\Str;
 use App\Exports\usersExport;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Arr;
+
 use function foo\func;
 
 class UsersController extends Controller
 {
     public function userLoginRegister(Request $request)
     {
-        $meta_title= "User Login/Register - E-com Website";
+        $meta_title = "User Login/Register - E-com Website";
         return view('users.login_register')->with(compact('meta_title'));
     }
 
@@ -88,30 +90,31 @@ class UsersController extends Controller
         }
     }
 
-    public function forgotPassword(Request $request){
-        if($request->isMethod('post')){
+    public function forgotPassword(Request $request)
+    {
+        if ($request->isMethod('post')) {
             $data = $request->all();
-            $userCount = User::where('email',$data['email'])->count();
-            if($userCount == 0){
+            $userCount = User::where('email', $data['email'])->count();
+            if ($userCount == 0) {
                 return redirect()->back()->with('flash_message_error', 'Email does not exist!');
             }
             //Get Users Details
-            $userDetails = User::where('email',$data['email'])->first();
+            $userDetails = User::where('email', $data['email'])->first();
             //Generate Random Password
             $random_password = Str::random(8);
             //Encode/Secure PAssword
             $new_password = bcrypt($random_password);
             //Update Password
-            User::where('email',$data['email'])->update(['password'=>$new_password]);
+            User::where('email', $data['email'])->update(['password' => $new_password]);
             //Send Forgot Password Email Code
             $email = $data['email'];
             $name = $userDetails->name;
             $messageData = [
-                'email'=>$email,
-                'name' =>$name,
-                'password'=>$random_password
+                'email' => $email,
+                'name' => $name,
+                'password' => $random_password
             ];
-            Mail::send('emails.forgotpassword',$messageData,function($message)use($email){
+            Mail::send('emails.forgotpassword', $messageData, function ($message) use ($email) {
                 $message->to($email)->subject('New Password - E-com Website');
             });
             return redirect('login-register')->with('flash_message_success', 'Please check your email for new password!');
@@ -140,8 +143,7 @@ class UsersController extends Controller
                 } else {
                     return redirect()->back()->with('flash_message_error', 'Password or Email is wrong!');
                 }
-            }
-            else{
+            } else {
                 return redirect()->back()->with('flash_message_error', 'Please create an account!');
             }
         }
@@ -159,8 +161,8 @@ class UsersController extends Controller
             } else {
                 User::where('email', $email)->update(['status' => 1]);
                 //Save Register Email
-                $messageData = ['email' => $email, 'name'=>$userDetails->name];
-                Mail::send('emails.welcome',$messageData,function($message) use($email){
+                $messageData = ['email' => $email, 'name' => $userDetails->name];
+                Mail::send('emails.welcome', $messageData, function ($message) use ($email) {
                     $message->to($email)->subject('Welcome to E-com Website');
                 });
                 return redirect('login-register')->with('flash_message_success', 'Your Email
@@ -268,16 +270,36 @@ class UsersController extends Controller
 
     }
 
-    public function viewUsers(){
-        if(Session::get('adminDetails')['users_access']==0){
-            return redirect('/admin/dashboard')->with('flash_message_error','You have no access for this module');
+    public function viewUsers()
+    {
+        if (Session::get('adminDetails')['users_access'] == 0) {
+            return redirect('/admin/dashboard')->with('flash_message_error', 'You have no access for this module');
         }
         $users = User::get();
         return view('admin.users.view_users')->with(compact('users'));
     }
 
-    public function exportUsers(){
-        return Excel::download(new usersExport,'users.xlsx');
+    public function exportUsers()
+    {
+        return Excel::download(new usersExport, 'users.xlsx');
     }
 
+    public function viewUsersCharts()
+    {
+        $current_month_users = User::whereYear('created_at', Carbon::now()
+            ->year)->whereMonth('created_at', Carbon::now()->month)->count();
+        $last_month_users = User::whereYear('created_at', Carbon::now()
+            ->year)->whereMonth('created_at', Carbon::now()->subMonth(1))->count();
+        $last_to_last_month_users = User::whereYear('created_at', Carbon::now()
+            ->year)->whereMonth('created_at', Carbon::now()->subMonth(2))->count();
+
+        return view('admin.users.view_users_charts')->with(compact('current_month_users', 'last_month_users', 'last_to_last_month_users'));
+    }
+
+    public function viewUsersCountriesCharts()
+    {
+        $getUserCountries = User::select('country', DB::raw('count(country) as count'))
+            ->groupBy('country')->get();
+        return view('admin.users.view_users_countries_charts')->with(compact('getUserCountries'));
+    }
 }

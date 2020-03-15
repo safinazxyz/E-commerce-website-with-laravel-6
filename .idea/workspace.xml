@@ -2,22 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5472f935-1950-4387-8698-cfaf51ac5c06" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sample.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sample.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProductsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProductsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_100000_create_password_resets_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_01_17_145422_create_category_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_01_17_204625_create_products_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_01_19_171322_create_products_attributes_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_01_25_181309_create_carts_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_01_27_145903_create_coupons_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_01_31_145946_create_orders_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_01_31_151127_create_orders_products_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_03_11_193300_create_newsletter_subscribers_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/frontend_js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/frontend_js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/frontLayout/front_design.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/frontLayout/front_design.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/frontLayout/front_header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/frontLayout/front_header.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/products/detail.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/detail.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UsersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UsersController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/orders/order_invoice.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/orders/order_invoice.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/adminLayout/admin_sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/adminLayout/admin_sidebar.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -209,6 +203,7 @@
       <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-dompdf" />
       <path value="$PROJECT_DIR$/vendor/sabberworm/php-css-parser" />
       <path value="$PROJECT_DIR$/vendor/dompdf/dompdf" />
+      <path value="$PROJECT_DIR$/vendor/milon/barcode" />
     </include_path>
   </component>
   <component name="ProjectId" id="1WASy3FXLRphL2EavJLGiPcY7hj" />
@@ -225,7 +220,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/products" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/admin/users" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -237,18 +232,18 @@
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php.composer" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\sultan\Desktop\sample2\resources\views\products" />
-      <recent name="C:\Users\sultan\Desktop\sample2\resources\views\admin\newsletters" />
-      <recent name="C:\Users\sultan\Desktop\sample2\resources\views\admin\admins" />
-      <recent name="C:\Users\sultan\Desktop\sample2\resources\views\admin\shipping" />
-      <recent name="C:\Users\sultan\Desktop\sample2\resources\views\admin\currencies" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\laravel\sample\resources\views\admin\users" />
       <recent name="C:\xampp\htdocs\laravel\sample\resources\views\orders" />
       <recent name="C:\xampp\htdocs\laravel\sample\resources\views\admin" />
       <recent name="C:\xampp\htdocs\laravel\sample\resources\views\products" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\sultan\Desktop\sample2\resources\views\admin\users" />
+      <recent name="C:\Users\sultan\Desktop\sample2\resources\views\admin\products" />
+      <recent name="C:\Users\sultan\Desktop\sample2\resources\views\products" />
+      <recent name="C:\Users\sultan\Desktop\sample2\resources\views\admin\newsletters" />
+      <recent name="C:\Users\sultan\Desktop\sample2\resources\views\admin\admins" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -315,6 +310,7 @@
       <workItem from="1584104929917" duration="2504000" />
       <workItem from="1584110253914" duration="10824000" />
       <workItem from="1584190927781" duration="12205000" />
+      <workItem from="1584277858074" duration="12759000" />
     </task>
     <servers />
   </component>
@@ -367,10 +363,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="487" y="258" key="ComposerInitDialogKey/0.0.1366.728@0.0.1366.728" timestamp="1582490605480" />
-    <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1583961691669">
+    <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1584283124215">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1583961691669" />
+    <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1584283124215" />
     <state x="512" y="74" key="RollbackChangesDialog" timestamp="1584120825971">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -383,18 +379,18 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="697" y="201" width="635" height="368" key="XPathView.FindDialog.DIMENSION_SERVICE_KEY.SIMPLE/0.0.1366.728@0.0.1366.728" timestamp="1584191466938" />
-    <state x="307" y="373" key="com.intellij.ide.util.TipDialog" timestamp="1584191076592">
+    <state x="307" y="373" key="com.intellij.ide.util.TipDialog" timestamp="1584277868365">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="307" y="373" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1584191076592" />
+    <state x="307" y="373" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1584277868365" />
     <state x="101" y="0" width="1136" height="728" key="find.popup" timestamp="1584191434753">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="101" y="0" width="1136" height="728" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1584191434753" />
-    <state x="482" y="30" width="672" height="677" key="run.anything.popup" timestamp="1583952874258">
+    <state x="482" y="30" width="672" height="677" key="run.anything.popup" timestamp="1584282108750">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="482" y="30" width="672" height="677" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1583952874258" />
+    <state x="482" y="30" width="672" height="677" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1584282108750" />
     <state x="669" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1581894953065">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

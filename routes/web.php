@@ -146,6 +146,8 @@ Route::group(['middleware' => ['adminlogin']], function () {
     Route::get('/admin/view-banners', 'BannersController@view');
     //Admin Orders Route
     Route::get('/admin/view-orders', 'ProductsController@viewOrders');
+    //Admin Orders Charts Route
+    Route::get('/admin/view-orders-charts', 'ProductsController@viewOrdersCharts');
     //Admin View Order Details
     Route::get('/admin/view-orders-detail/{id}', 'ProductsController@viewOrdersDetail');
     //Order Invoice
@@ -156,7 +158,10 @@ Route::group(['middleware' => ['adminlogin']], function () {
     Route::post('/admin/update-order-status', 'ProductsController@updateOrderStatus');
     //Admin Users Route
     Route::get('/admin/view-users', 'UsersController@viewUsers');
-
+    //Admin Users Charts Route
+    Route::get('/admin/view-users-countries-charts', 'UsersController@viewUsersCountriesCharts');
+    //Admin Users Counties Charts Route
+    Route::get('/admin/view-users-charts', 'UsersController@viewUsersCharts');
     //Admin/Sub-Admins View & Add Route
     Route::get('/admin/view-admins', 'AdminController@viewAdmins');
     Route::match(['get', 'post'], '/admin/add-admin', 'AdminController@addAdmin');

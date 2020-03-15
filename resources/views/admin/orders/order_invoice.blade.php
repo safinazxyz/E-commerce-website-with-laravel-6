@@ -8,7 +8,8 @@
         <div class="col-xs-12">
             <div class="invoice-title">
                 <h2>Invoice</h2>
-                <h3 class="pull-right">Order # {{ $orderDetails->id }}</h3>
+                <h3 class="pull-right">Order # {{ $orderDetails->id }}
+                    <span style="float: right;"> <?php echo DNS2D::getBarcodeHTML(" $orderDetails->id ", "QRCODE"); ?> </span></h3>
             </div>
             <hr>
             <div class="row">
@@ -76,7 +77,7 @@
                             <?php $subtotal = 0; ?>
                             @foreach($orderDetails->orders as $order)
                             <tr>
-                                <td>{{ $order->product_name }} ({{ $order->product_code}})</td>
+                                <td>{{ $order->product_name }} <?php echo DNS2D::getBarcodeHTML(" $orderDetails->code ", "QRCODE"); ?> </td>
                                 <td class="text-center">{{ $order->product_size }}</td>
                                 <td class="text-center">{{ $order->product_color }}</td>
                                 <td class="text-center">{{ $order->product_price }} TL</td>
